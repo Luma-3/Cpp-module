@@ -1,25 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.cpp                                         :+:      :+:    :+:   */
+/*   HumanB.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jbrousse <jbrousse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/04 23:40:27 by jbrousse          #+#    #+#             */
-/*   Updated: 2024/06/19 13:08:28 by jbrousse         ###   ########.fr       */
+/*   Created: 2024/06/19 17:02:17 by jbrousse          #+#    #+#             */
+/*   Updated: 2024/06/19 18:27:35 by jbrousse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#include "HumanB.hpp"
 
-Zombie::Zombie(string name) : _name(name) {};
+HumanB::HumanB(string name) : name(name) {};
 
-Zombie::~Zombie()
+HumanB::~HumanB() {};
+
+void HumanB::attack()
 {
-	std::cout << _name << " destroyed" << std::endl;
+	if (weapon == NULL) {
+		cout << name + "attacks with their hands" << endl;
+	}
+	else {
+		cout << name + "attacks with their" + weapon->getType() << endl;
+	}
 }
 
-void Zombie::announce(void)
+void HumanB::setWeapon(Weapon &weapon)
 {
-	std::cout << _name << ": BraiiiiiiinnnzzzZ..." << std::endl;
+	this->weapon = &weapon;
 }
