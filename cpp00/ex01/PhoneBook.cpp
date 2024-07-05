@@ -6,12 +6,19 @@
 /*   By: jbrousse <jbrousse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 22:08:15 by jbrousse          #+#    #+#             */
-/*   Updated: 2024/05/04 22:43:17 by jbrousse         ###   ########.fr       */
+/*   Updated: 2024/07/05 10:59:49 by jbrousse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <PhoneBook.hpp>
 #include <stdlib.h>
+
+using std::string;
+using std::setw;
+
+using std::cout;
+using std::cin;
+using std::endl;
 
 PhoneBook::PhoneBook()
 {
@@ -22,17 +29,18 @@ PhoneBook::PhoneBook()
 void PhoneBook::Add()
 {
 	Contact contactToAdd;
-	std::string input;
+	string input;
 	
-	std::string fields[] = {"First Name", "Last Name", "Nickname", "Phone Number", "Darkest Secret"};
+	string fields[] = {"First Name", "Last Name", "Nickname", "Phone Number", "Darkest Secret"};
 	const size_t nbFields = sizeof(fields) / sizeof(fields[0]);
-	
-	for (size_t i = 0; i < nbFields;)
+
+	size_t i = 0;
+	while (i < nbFields)
 	{
-		std::cout << fields[i] << ":";
-		std::getline(std::cin, input);
+		cout << fields[i] << ":";
+		std::getline(cin, input);
 		if (input.empty() == true){
-			std::cout << "le champ ne doit pas etre Vide !\n";
+			cout << "le champ ne doit pas etre Vide !\n";
 			continue;
 		}
 		if (fields[i] == "First Name") {
@@ -50,7 +58,7 @@ void PhoneBook::Add()
 		else if (fields[i] == "Darkest Secret") {
             contactToAdd.setDarkestSecret(input);
         }
-		i++;
+		++i;
 	}
 	if (nbContact < 8)
 		nbContact++;
@@ -60,44 +68,53 @@ void PhoneBook::Add()
 		index = 0;
 }
 
+static string trunc_str_if(string &arg)
+{
+	if (arg.length() > 10)
+	{
+		return (arg.substr(0, 9) + ".");
+	}
+	return (arg);
+}
+
 void PhoneBook::DisplayRepertory(void)
 {
-	std::string input;
+	string input;
 
-	std::cout << std::setw(10) << "Index" << " | "
-              << std::setw(10) << "First Name" << " | "
-              << std::setw(10) << "Last Name" << " | "
-              << std::setw(10) << "Nickname\n";
-    std::cout << std::string(10, '-') << " | "
-              << std::string(10, '-') << " | "
-              << std::string(10, '-') << " | "
-              << std::string(10, '-') << std::endl;
+	cout << setw(10) << "Index" << " | "
+              << setw(10) << "First Name" << " | "
+              << setw(10) << "Last Name" << " | "
+              << setw(10) << "Nickname\n";
+    cout << string(10, '-') << " | "
+              << string(10, '-') << " | "
+              << string(10, '-') << " | "
+              << string(10, '-') << endl;
 	for (int i = 0; i < nbContact; i++)
 	{
-		std::string first_name = repertory[i].getFirstName();
-		std::string last_name = repertory[i].getLastName();
-		std::string nickname = repertory[i].getNickname();
+		string first_name = repertory[i].getFirstName();
+		string last_name = repertory[i].getLastName();
+		string nickname = repertory[i].getNickname();
 
-		std::cout	<< std::right << std::setw(10) << i << " | "
-					<< std::setw(10) << (first_name.length() > 10 ? first_name.substr(0, 9) + "." : first_name) << " | "
-					<< std::setw(10) << (last_name.length() > 10 ? last_name.substr(0, 9) + "." : last_name) << " | "
-					<< std::setw(10) << (nickname.length() > 10 ? nickname.substr(0, 9) + "." : nickname) << "\n";
+		cout	<< std::right << setw(10) << i << " | "
+					<< setw(10) << trunc_str_if(first_name) << " | "
+					<< setw(10) << trunc_str_if(last_name) << " | "
+					<< setw(10) << trunc_str_if(nickname) << "\n";
 	}
 	while (true)
 	{
-		std::cout << "To see a Contact type its index: ";
-		std::getline(std::cin, input);
+		cout << "To see a Contact type its index: ";
+		std::getline(cin, input);
 		if (input.length() == 1 && input[0] >= '0' && input[0] <= '7' && atoi(input.c_str()) < nbContact)
 		{
 			int index = input[0] - '0';
-			std::cout << "First Name: " << repertory[index].getFirstName() << std::endl;
-			std::cout << "Last Name: " << repertory[index].getLastName() << std::endl;
-			std::cout << "Nickname: " << repertory[index].getNickname() << std::endl;
-			std::cout << "Phone Number: " << repertory[index].getPhoneNumber() << std::endl;
-			std::cout << "Darkest Secret: " << repertory[index].getDarkestSecret() << std::endl;
+			cout << "First Name: " << repertory[index].getFirstName() << endl;
+			cout << "Last Name: " << repertory[index].getLastName() << endl;
+			cout << "Nickname: " << repertory[index].getNickname() << endl;
+			cout << "Phone Number: " << repertory[index].getPhoneNumber() << endl;
+			cout << "Darkest Secret: " << repertory[index].getDarkestSecret() << endl;
 			break;
 		}
 		else
-			std::cout << "Invalid index\n";
+			cout << "Invalid index\n";
 	}
 }
