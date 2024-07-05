@@ -6,7 +6,7 @@
 /*   By: jbrousse <jbrousse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 00:14:57 by jbrousse          #+#    #+#             */
-/*   Updated: 2024/05/04 22:11:35 by jbrousse         ###   ########.fr       */
+/*   Updated: 2024/07/05 16:08:30 by jbrousse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,10 @@
 # define PHONEBOOK_HPP
 
 #include "Contact.hpp"
+
 #include <iomanip>
+# include <iostream>
+# include <string>
 
 class PhoneBook
 {

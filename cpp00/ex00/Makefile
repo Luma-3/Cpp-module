@@ -6,7 +6,7 @@
 #    By: jbrousse <jbrousse@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/03 23:24:55 by jbrousse          #+#    #+#              #
-#    Updated: 2024/07/05 13:13:49 by jbrousse         ###   ########.fr        #
+#    Updated: 2024/07/05 15:16:41 by jbrousse         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ CFLAGS = -Wall -Wextra -Werror -std=c++98
 
 NAME = megaphone
 
-SRC = megaphone.cpp
+SRCS = megaphone.cpp
 
 
 OBJ_DIR = obj/

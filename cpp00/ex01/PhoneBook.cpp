@@ -6,7 +6,7 @@
 /*   By: jbrousse <jbrousse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 22:08:15 by jbrousse          #+#    #+#             */
-/*   Updated: 2024/07/05 13:30:39 by jbrousse         ###   ########.fr       */
+/*   Updated: 2024/07/05 16:09:19 by jbrousse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,10 @@ void PhoneBook::Add()
 	{
 		cout << fields[i] << ":";
 		std::getline(cin, input);
-		if (input.empty() == true){
-			cout << "le champ ne doit pas etre Vide !\n";
-			continue;
-		}
+
+		if (std::cin.eof())
+			exit(0);
+
 		if (fields[i] == "First Name") {
             contactToAdd.setFirstName(input);
         }
@@ -110,7 +110,8 @@ void PhoneBook::DisplayRepertory(void)
 	{
 		cout << "To see a Contact type its index: ";
 		std::getline(cin, input);
-
+		if (std::cin.eof())
+			exit (0);
 		if (input.length() == 1 && input[0] >= '0' && input[0] <= '7' && atoi(input.c_str()) < nbContact)
 		{
 			int index = input[0] - '0';
