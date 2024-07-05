@@ -6,7 +6,7 @@
 #    By: jbrousse <jbrousse@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/04 00:04:06 by jbrousse          #+#    #+#              #
-#    Updated: 2024/05/05 00:43:08 by jbrousse         ###   ########.fr        #
+#    Updated: 2024/07/05 13:13:26 by jbrousse         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,19 +20,21 @@ SRCS =	main.cpp		\
 		PhoneBook.cpp
 
 INCS = -I ./
-		
-OBJS = $(SRCS:.cpp=.o)
+
+OBJ_DIR = obj/
+OBJS = $(addprefix $(OBJ_DIR), $(SRCS:.cpp=.o))
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) $(INCS) $(OBJS) -o $(NAME)
 
-%.o: %.cpp
+$(OBJ_DIR)%.o: %.cpp
+	mkdir -p $(OBJ_DIR)
 	$(CC) $(CFLAGS) $(INCS) -c $< -o $@
 
 clean:
-	rm -f $(OBJS)
+	rm -rf $(OBJ_DIR)
 
 fclean: clean
 	rm -f $(NAME)

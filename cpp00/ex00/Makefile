@@ -6,7 +6,7 @@
 #    By: jbrousse <jbrousse@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/03 23:24:55 by jbrousse          #+#    #+#              #
-#    Updated: 2024/05/03 23:25:36 by jbrousse         ###   ########.fr        #
+#    Updated: 2024/07/05 13:13:49 by jbrousse         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,18 +17,21 @@ NAME = megaphone
 
 SRC = megaphone.cpp
 
-OBJ = $(SRC:.cpp=.o)
+
+OBJ_DIR = obj/
+OBJ = $(addprefix $(OBJ_DIR), $(SRCS:.cpp=.o))
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
 	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
 	
-%.o: %.cpp
+$(OBJ_DIR)%.o: %.cpp
+	mkdir -p $(OBJ_DIR)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	rm -f $(OBJ)
+	rm -rf $(OBJ_DIR)
 
 fclean: clean
 	rm -f $(NAME)

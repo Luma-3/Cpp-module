@@ -6,7 +6,7 @@
 /*   By: jbrousse <jbrousse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 22:08:15 by jbrousse          #+#    #+#             */
-/*   Updated: 2024/07/05 10:59:49 by jbrousse         ###   ########.fr       */
+/*   Updated: 2024/07/05 13:30:39 by jbrousse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,12 @@ static string trunc_str_if(string &arg)
 void PhoneBook::DisplayRepertory(void)
 {
 	string input;
-
+	if (nbContact == 0)
+	{
+		cout << "No contact to display\n";
+		return ;
+	}
+	
 	cout << setw(10) << "Index" << " | "
               << setw(10) << "First Name" << " | "
               << setw(10) << "Last Name" << " | "
@@ -100,10 +105,12 @@ void PhoneBook::DisplayRepertory(void)
 					<< setw(10) << trunc_str_if(last_name) << " | "
 					<< setw(10) << trunc_str_if(nickname) << "\n";
 	}
+	
 	while (true)
 	{
 		cout << "To see a Contact type its index: ";
 		std::getline(cin, input);
+
 		if (input.length() == 1 && input[0] >= '0' && input[0] <= '7' && atoi(input.c_str()) < nbContact)
 		{
 			int index = input[0] - '0';
