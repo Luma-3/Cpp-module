@@ -6,7 +6,7 @@
 /*   By: jbrousse <jbrousse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 12:35:12 by jbrousse          #+#    #+#             */
-/*   Updated: 2024/07/03 12:53:59 by jbrousse         ###   ########.fr       */
+/*   Updated: 2024/07/08 10:10:34 by jbrousse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ private:
 public:
 	Fixed();
 	Fixed(const Fixed &other);
-	Fixed& operator=(const Fixed &other);
+	Fixed &operator=(const Fixed &other);
 	~Fixed();
 
 	int getRawBits(void) const;
