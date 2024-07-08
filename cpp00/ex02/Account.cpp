@@ -6,7 +6,7 @@
 /*   By: jbrousse <jbrousse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 18:54:50 by jbrousse          #+#    #+#             */
-/*   Updated: 2024/07/05 11:42:12 by jbrousse         ###   ########.fr       */
+/*   Updated: 2024/07/08 10:29:39 by jbrousse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,13 +50,10 @@ void Account::_displayTimestamp(void)
 {
 	std::time_t now = std::time(0);
 	std::tm	*timestamp = std::localtime(&now);
+	char buff[20];
 	
-	std::cout 	<< std::setfill('0') << '[' << 1900 + timestamp->tm_year
-				<< std::setw(2) << timestamp->tm_mon
-				<< std::setw(2) << timestamp->tm_mday << "_"
-				<< std::setw(2) << timestamp->tm_hour
-				<< std::setw(2) << timestamp->tm_min
-				<< std::setw(2) << timestamp->tm_sec << "] " << std::flush;
+	std::strftime(buff, sizeof(buff), "[%Y%m%d_%H%M%S]", timestamp);
+	std::cout << buff << " ";
 }
 
 
