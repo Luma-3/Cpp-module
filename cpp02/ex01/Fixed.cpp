@@ -6,7 +6,7 @@
 /*   By: jbrousse <jbrousse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 12:25:36 by jbrousse          #+#    #+#             */
-/*   Updated: 2024/07/03 14:43:45 by jbrousse         ###   ########.fr       */
+/*   Updated: 2024/07/09 11:15:47 by jbrousse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ Fixed::Fixed(const float val)
 
 Fixed& Fixed::operator=(const Fixed &other)
 {
+	cout << "Copy assignment operator called" << endl;
 	if (this != &other) {
-		cout << "Copy assignment operator called" << endl;
 		_value = other._value;
 	}
 	return (*this);

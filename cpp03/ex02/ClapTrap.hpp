@@ -6,7 +6,7 @@
 using std::string;
 
 class ClapTrap {
-private:
+protected:
 	string _name;
 	int	_hit_point;
 	int _energy_point;
@@ -19,9 +19,8 @@ public:
 	~ClapTrap();
 
 	ClapTrap(const string &name);
-	ClapTrap(const string &name, unsigned int hit_point, unsigned int energy_point, unsigned int attack_damage);
 
-	void attack(const string &target);
+	virtual void attack(const string &target);
 	void takeDamage(unsigned int amount);
 	void beRepaired(unsigned int amount);
 
