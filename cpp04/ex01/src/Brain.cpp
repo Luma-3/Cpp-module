@@ -1,42 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   DiamondTrap.cpp                                    :+:      :+:    :+:   */
+/*   Brain.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jbrousse <jbrousse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/10 16:58:02 by jbrousse          #+#    #+#             */
-/*   Updated: 2024/07/10 17:11:27 by jbrousse         ###   ########.fr       */
+/*   Created: 2024/07/11 12:35:27 by jbrousse          #+#    #+#             */
+/*   Updated: 2024/07/11 12:39:18 by jbrousse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "DiamondTrap.hpp"
+#include "Brain.hpp"
 
 #include <iostream>
 
 using std::cout;
 using std::endl;
 
-DiamondTrap::DiamondTrap() : ScavTrap(), FragTrap() {
-
+Brain::Brain() {
+	cout << "Brain constructor called" << endl;
 }
 
-DiamondTrap::DiamondTrap(const DiamondTrap & src) {
-
+Brain::Brain(const Brain & src) {
+	cout << "Brain copy constructor called" << endl;
+	*this = src;
 }
 
-DiamondTrap & DiamondTrap::operator=(const DiamondTrap & src) {
+Brain & Brain::operator=(const Brain & src) {
 	if (this != &src) {
-		;
+		for (int i = 0; i < 100; i++) {
+			this->ideas[i] = src.ideas[i];
+		}
 	}
 	return *this;
 }
 
-DiamondTrap::~DiamondTrap() {
-
-}
-
-DiamondTrap::DiamondTrap(const string &name) : ScavTrap(name + "_clap_name"), FragTrap(name + "_clap_name")
-{
-	cout << "DiamoundTrap param contructor called" <<endl;
+Brain::~Brain() {
+	cout << "Brain destructor called" << endl;
 }

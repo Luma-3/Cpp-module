@@ -8,7 +8,7 @@
 
 using std::string;
 
-class DiamondTrap : ScavTrap, FragTrap{
+class DiamondTrap : public ScavTrap, public FragTrap {
 private:
 	string _name;
 
@@ -19,6 +19,8 @@ public:
 	~DiamondTrap();
 
 	DiamondTrap(const string &name);
+
+	void whoAmI(void);
 };
 
 

@@ -6,7 +6,7 @@
 /*   By: jbrousse <jbrousse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 14:20:07 by jbrousse          #+#    #+#             */
-/*   Updated: 2024/07/10 17:13:41 by jbrousse         ###   ########.fr       */
+/*   Updated: 2024/07/11 10:32:51 by jbrousse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,10 @@ int main(void)
 	a1.takeDamage(b1.getAttackDamage());
 
 	b1.highFivesGuys();
+
+	c1.whoAmI();
+	c1.attack(b1.getName());
+	b1.takeDamage(c1.getAttackDamage());
 	
 		
 	return 0;

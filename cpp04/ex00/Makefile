@@ -6,24 +6,26 @@
 #    By: jbrousse <jbrousse@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/04 23:30:42 by jbrousse          #+#    #+#              #
-#    Updated: 2024/07/11 10:49:22 by jbrousse         ###   ########.fr        #
+#    Updated: 2024/07/11 12:26:29 by jbrousse         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = c++
-CFLAGS = -Wall -Wextra -Werror -Wshadow -std=c++98 -I $(INC)
+CFLAGS = -Wall -Wextra -Werror -Wshadow -Wunused -std=c++98 -I $(INC)
 
-NAME = Warrior
+NAME = animal
 
 SRC_DIR = src/
 
 INC = inc/
 
 SRCS =	main.cpp		\
-		ClapTrap.cpp	\
-		ScavTrap.cpp	\
-		FragTrap.cpp	\
-		DiamondTrap.cpp
+		Animal.cpp		\
+		Cat.cpp			\
+		Dog.cpp			\
+		WrongAnimal.cpp	\
+		WrongCat.cpp
+
 
 SRC = $(addprefix $(SRC_DIR), $(SRCS))
 
