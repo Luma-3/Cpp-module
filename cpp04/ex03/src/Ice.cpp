@@ -1,44 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   AMateria.cpp                                       :+:      :+:    :+:   */
+/*   Ice.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jbrousse <jbrousse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/11 14:43:01 by jbrousse          #+#    #+#             */
-/*   Updated: 2024/07/11 18:04:49 by jbrousse         ###   ########.fr       */
+/*   Created: 2024/07/11 17:49:26 by jbrousse          #+#    #+#             */
+/*   Updated: 2024/07/11 17:59:29 by jbrousse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "AMateria.hpp"
+#include "Ice.hpp"
 
 #include <iostream>
 
 using std::cout;
 using std::endl;
-using std::string;
 
-AMateria::AMateria() : type("unknown") {}
+Ice::Ice() : AMateria("ice") {}
 
-AMateria::AMateria(std::string const & type) : type(type) {}
+Ice::Ice(const Ice & src) : AMateria(src) {}
 
-AMateria::AMateria(const AMateria & src) : type(src.type) {
-}
-
-AMateria & AMateria::operator=(const AMateria & src) {
+Ice & Ice::operator=(const Ice & src) {
 	if (this != &src) {
-		type = src.type;
+		AMateria::operator=(src);
 	}
 	return *this;
 }
 
-AMateria::~AMateria() {}
+Ice::~Ice() {}
 
-string const & AMateria::getType() const {
-	return type;
+AMateria* Ice::clone() const {
+	return (new Ice(*this));
 }
 
-void AMateria::use(ICharacter & target) {
-	cout << " Use called on " << target.getName() << endl;
+void Ice::use(ICharacter& target)
+{
+	cout << "* shoots an ice bolt at " << target.getName() << " *" << endl;
 }
-

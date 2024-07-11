@@ -1,81 +1,61 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Character.cpp                                      :+:      :+:    :+:   */
+/*   MateriaSource.cpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jbrousse <jbrousse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/11 17:23:16 by jbrousse          #+#    #+#             */
-/*   Updated: 2024/07/11 18:46:17 by jbrousse         ###   ########.fr       */
+/*   Created: 2024/07/11 18:27:51 by jbrousse          #+#    #+#             */
+/*   Updated: 2024/07/11 18:41:13 by jbrousse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Character.hpp"
+#include "MateriaSource.hpp"
 
-Character::Character() : name("unknown")
-{
+MateriaSource::MateriaSource() {
 	for (size_t i = 0; i < 4; i++)
 	{
 		inventory[i] = NULL;
 	}
 }
 
-Character::Character(std::string name) : name(name)
-{
-	for (size_t i = 0; i < 4; i++)
-	{
-		inventory[i] = NULL;
-	}
-}
-
-
-Character::Character(const Character &src) : name(src.name)
-{
+MateriaSource::MateriaSource(const MateriaSource & src) {
 	for (size_t i = 0; i < 4; i++)
 	{
 		delete inventory[i];
 	}
 	for (size_t i = 0; i < 4; i++)
 	{
-		inventory[i] = src.inventory[i]->clone();
+		inventory[i] = src.inventory[i];
 	}
 }
 
-Character &Character::operator=(const Character &src)
-{
-	if (this != &src)
-	{
-		name = src.name;
+MateriaSource & MateriaSource::operator=(const MateriaSource & src) {
+	if (this != &src) {
 		for (size_t i = 0; i < 4; i++)
 		{
 			delete inventory[i];
 		}
 		for (size_t i = 0; i < 4; i++)
 		{
-			inventory[i] = src.inventory[i]->clone();
+			inventory[i] = src.inventory[i];
 		}
 	}
-	return (*this);
+	return *this;
 }
 
-Character::~Character()
-{
+MateriaSource::~MateriaSource() {
 	for (size_t i = 0; i < 4; i++)
 	{
 		delete inventory[i];
 	}
 }
 
-string const &Character::getName() const
-{
-	return name;
-}
-
-void Character::equip(AMateria *m)
+void MateriaSource::learnMateria(AMateria* m)
 {
 	for (size_t i = 0; i < 4; i++)
 	{
-		if (inventory[i] != NULL)
+		if (inventory[i] == NULL)
 		{
 			inventory[i] = m;
 			break;
@@ -83,13 +63,14 @@ void Character::equip(AMateria *m)
 	}
 }
 
-void Character::unequip(int idx)
+AMateria* MateriaSource::createMateria(std::string const & type)
 {
-	// TODO Chain list ?
-}
-
-void Character::use(int idx, ICharacter &target)
-{
-	if (inventory[idx] != NULL)
-		inventory[idx]->use(target);
+	for (size_t i = 0; i < 4; i++)
+	{
+		if ( inventory[i] && inventory[i]->getType() == type)
+		{
+			return inventory[i]->clone();
+		}
+	}
+	return (NULL);
 }

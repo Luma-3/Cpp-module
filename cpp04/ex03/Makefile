@@ -6,7 +6,7 @@
 #    By: jbrousse <jbrousse@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/04 23:30:42 by jbrousse          #+#    #+#              #
-#    Updated: 2024/07/11 12:54:41 by jbrousse         ###   ########.fr        #
+#    Updated: 2024/07/11 18:47:01 by jbrousse         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,13 +19,12 @@ SRC_DIR = src/
 
 INC = inc/
 
-SRCS =	main.cpp		\
-		Animal.cpp		\
-		Cat.cpp			\
-		Dog.cpp			\
-		WrongAnimal.cpp	\
-		WrongCat.cpp	\
-		Brain.cpp
+SRCS =	main.cpp			\
+		AMateria.cpp		\
+		Character.cpp		\
+		Cure.cpp			\
+		Ice.cpp				\
+		MateriaSource.cpp	\
 
 
 SRC = $(addprefix $(SRC_DIR), $(SRCS))

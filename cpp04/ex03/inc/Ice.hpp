@@ -4,8 +4,6 @@
 #include "AMateria.hpp"
 
 class Ice : public AMateria {
-private:
-	/* data */
 
 public:
 	Ice();
@@ -13,21 +11,10 @@ public:
 	Ice & operator=(const Ice & src);
 	~Ice();
 
+	AMateria* clone() const;
+	void use(ICharacter& target);
 };
 
-Ice::Ice() : AMateria("ice") {}
 
-Ice::Ice(const Ice & src) : AMateria(src) {}
-
-Ice & Ice::operator=(const Ice & src) {
-	if (this != &src) {
-		AMateria::operator=(src);
-	}
-	return *this;
-}
-
-Ice::~Ice() {
-
-}
 
 #endif // ICE_HPP
