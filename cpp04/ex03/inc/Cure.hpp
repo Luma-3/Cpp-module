@@ -3,6 +3,8 @@
 
 #include "AMateria.hpp"
 
+#include "ICharacter.hpp"
+
 #include <iostream>
 
 using std::cout;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ICharacter.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jbrousse <jbrousse@student.42.fr>          +#+  +:+       +#+        */
+/*   By: luma <luma@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/11 13:58:23 by jbrousse          #+#    #+#             */
-/*   Updated: 2024/07/11 16:39:23 by jbrousse         ###   ########.fr       */
+/*   Updated: 2024/07/11 23:04:16 by luma             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@ using std::string;
 
 class ICharacter
 {
-private:
-	string name;
 
 public:
 	virtual ~ICharacter() {}

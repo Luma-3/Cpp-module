@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   AMateria.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jbrousse <jbrousse@student.42.fr>          +#+  +:+       +#+        */
+/*   By: luma <luma@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/11 14:43:01 by jbrousse          #+#    #+#             */
-/*   Updated: 2024/07/11 18:04:49 by jbrousse         ###   ########.fr       */
+/*   Updated: 2024/07/11 23:03:42 by luma             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "AMateria.hpp"
+#include "ICharacter.hpp"
 
 #include <iostream>
 
@@ -18,16 +19,16 @@ using std::cout;
 using std::endl;
 using std::string;
 
-AMateria::AMateria() : type("unknown") {}
+AMateria::AMateria() : _type("unknown") {}
 
-AMateria::AMateria(std::string const & type) : type(type) {}
+AMateria::AMateria(std::string const & type) : _type(type) {}
 
-AMateria::AMateria(const AMateria & src) : type(src.type) {
+AMateria::AMateria(const AMateria & src) : _type(src._type) {
 }
 
 AMateria & AMateria::operator=(const AMateria & src) {
 	if (this != &src) {
-		type = src.type;
+		_type = src._type;
 	}
 	return *this;
 }
@@ -35,10 +36,10 @@ AMateria & AMateria::operator=(const AMateria & src) {
 AMateria::~AMateria() {}
 
 string const & AMateria::getType() const {
-	return type;
+	return _type;
 }
 
-void AMateria::use(ICharacter & target) {
+void AMateria::use(ICharacter& target) {
 	cout << " Use called on " << target.getName() << endl;
 }
 

@@ -3,14 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   MateriaSource.cpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jbrousse <jbrousse@student.42.fr>          +#+  +:+       +#+        */
+/*   By: luma <luma@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/11 18:27:51 by jbrousse          #+#    #+#             */
-/*   Updated: 2024/07/11 18:41:13 by jbrousse         ###   ########.fr       */
+/*   Updated: 2024/07/11 23:12:40 by luma             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "MateriaSource.hpp"
+
+#include <iostream>
+
+using std::cout;
+using std::endl;
 
 MateriaSource::MateriaSource() {
 	for (size_t i = 0; i < 4; i++)

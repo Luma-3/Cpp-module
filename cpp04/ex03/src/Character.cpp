@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   Character.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jbrousse <jbrousse@student.42.fr>          +#+  +:+       +#+        */
+/*   By: luma <luma@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/11 17:23:16 by jbrousse          #+#    #+#             */
-/*   Updated: 2024/07/11 18:46:17 by jbrousse         ###   ########.fr       */
+/*   Updated: 2024/07/11 23:12:07 by luma             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Character.hpp"
 
-Character::Character() : name("unknown")
+Character::Character() : _name("unknown")
 {
 	for (size_t i = 0; i < 4; i++)
 	{
@@ -20,7 +20,7 @@ Character::Character() : name("unknown")
 	}
 }
 
-Character::Character(std::string name) : name(name)
+Character::Character(std::string name) : _name(name)
 {
 	for (size_t i = 0; i < 4; i++)
 	{
@@ -29,7 +29,7 @@ Character::Character(std::string name) : name(name)
 }
 
 
-Character::Character(const Character &src) : name(src.name)
+Character::Character(const Character &src) : _name(src._name)
 {
 	for (size_t i = 0; i < 4; i++)
 	{
@@ -45,7 +45,7 @@ Character &Character::operator=(const Character &src)
 {
 	if (this != &src)
 	{
-		name = src.name;
+		_name = src._name;
 		for (size_t i = 0; i < 4; i++)
 		{
 			delete inventory[i];
@@ -68,14 +68,14 @@ Character::~Character()
 
 string const &Character::getName() const
 {
-	return name;
+	return _name;
 }
 
 void Character::equip(AMateria *m)
 {
 	for (size_t i = 0; i < 4; i++)
 	{
-		if (inventory[i] != NULL)
+		if (inventory[i] == NULL)
 		{
 			inventory[i] = m;
 			break;
@@ -86,6 +86,10 @@ void Character::equip(AMateria *m)
 void Character::unequip(int idx)
 {
 	// TODO Chain list ?
+	if (inventory[idx] != NULL)
+	{
+		inventory[idx] = NULL;
+	}
 }
 
 void Character::use(int idx, ICharacter &target)
