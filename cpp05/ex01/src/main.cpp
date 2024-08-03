@@ -6,7 +6,7 @@
 /*   By: luma <luma@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 15:09:24 by luma              #+#    #+#             */
-/*   Updated: 2024/08/03 15:19:41 by luma             ###   ########.fr       */
+/*   Updated: 2024/08/03 15:15:54 by luma             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,65 +30,67 @@ using std::cerr;
 
 int main(void)
 {
-	cout << BLUE << "Bureaucrat tests" << RESET << endl;
+	cout << BLUE << "Form tests" << RESET << endl;
 	cout << "----------------" << endl;
-	cout << endl;
-
-	TEST("1", "Create Bureaucrat with Correct information", {
-		Bureaucrat bureaucrat("bureaucrat", 1);
-		EXPECT_EQ(bureaucrat.getName(), "bureaucrat");
-		EXPECT_EQ(bureaucrat.getGrade(), 1);
+	
+	TEST("1", "Create Form with Correct information", {
+		Form form("form", 1, 1);
+		EXPECT_EQ(form.getName(), "form");
+		EXPECT_EQ(form.getGradeToSign(), 1);
+		EXPECT_EQ(form.getGradeToExecute(), 1);
 	});
 
-	TEST("2", "Create Bureaucrat with Too Low Grade", {
+	TEST("2", "Create Form with Too Low Sign-Grade", {
 		try {
-			Bureaucrat bureaucrat("bureaucrat", 151);
+			Form form("form", 151, 1);
 		} catch (std::exception &e) {
 			EXPECT_EQ(string(e.what()), "Grade is too low");
 		}
 	});
 
-	TEST("3", "Create Bureaucrat with Too High Grade", {
+	TEST("3", "Create Form with Too High Sign-Grade", {
 		try {
-			Bureaucrat bureaucrat("bureaucrat", 0);
+			Form form("form", 0, 1);
 		} catch (std::exception &e) {
 			EXPECT_EQ(string(e.what()), "Grade is too high");
 		}
 	});
 
-	TEST("4", "Promote Bureaucrat", {
-		Bureaucrat bureaucrat("bureaucrat", 150);
-		bureaucrat.promotion();
-		EXPECT_EQ(bureaucrat.getGrade(), 149);
+	TEST("4", "Create Form with Too Low Execute-Grade", {
+		try {
+			Form form("form", 1, 151);
+		} catch (std::exception &e) {
+			EXPECT_EQ(string(e.what()), "Grade is too low");
+		}
 	});
 
-	TEST("5", "Demote Bureaucrat", {
+	TEST("5", "Create Form with Too High Execute-Grade", {
+		try {
+			Form form("form", 1, 0);
+		} catch (std::exception &e) {
+			EXPECT_EQ(string(e.what()), "Grade is too high");
+		}
+	});
+
+	TEST("6", "Create Form with Correct information and Sign it", {
+		Form form("form", 1, 1);
+		Bureaucrat bureaucrat("bureaucrat", 1);
+		form.beSigned(bureaucrat);
+		EXPECT_EQ(form.isSigned(), true);
+	});
+
+	TEST("7", "Create Form with Correct information and Sign it with Too Low Grade", {
+		Form form("form", 1, 1);
 		Bureaucrat bureaucrat("bureaucrat", 2);
-		bureaucrat.demotion();
-		EXPECT_EQ(bureaucrat.getGrade(), 3);
-	});
-
-	TEST("6", "Promote Bureaucrat with Too High Grade", {
-		Bureaucrat bureaucrat("bureaucrat", 1);
 		try {
-			bureaucrat.promotion();
-		} catch (std::exception &e) {
-			EXPECT_EQ(string(e.what()), "Grade is too high");
-		}
-	});
-
-	TEST("7", "Demote Bureaucrat with Too Low Grade", {
-		Bureaucrat bureaucrat("bureaucrat", 150);
-		try {
-			bureaucrat.demotion();
+			form.beSigned(bureaucrat);
 		} catch (std::exception &e) {
 			EXPECT_EQ(string(e.what()), "Grade is too low");
 		}
 	});
 
 	cout << "----------------" << endl;
-	cout << endl;
-	cout << BLUE << "End of Bureaucrat tests" << RESET << endl;
-
+	cout << BLUE << "End of Form tests" << RESET << endl;
+	
 	return (0);
 }
