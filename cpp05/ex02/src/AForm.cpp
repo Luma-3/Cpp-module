@@ -6,7 +6,7 @@
 /*   By: luma <luma@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 16:45:04 by luma              #+#    #+#             */
-/*   Updated: 2024/08/03 19:48:48 by luma             ###   ########.fr       */
+/*   Updated: 2024/08/03 21:44:11 by luma             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ const char *AForm::GradeTooLowException::what() const throw() {
 }
 
 const char *AForm::FormNotSignedExecption::what() const throw() {
-	return ("Form is not Signed");
+	return ("Form is not signed");
 }
 
 void AForm::checkExectionRequirement(Bureaucrat const & executor) const {

@@ -6,7 +6,7 @@
 #    By: luma <luma@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/04 23:30:42 by jbrousse          #+#    #+#              #
-#    Updated: 2024/08/03 19:42:56 by luma             ###   ########.fr        #
+#    Updated: 2024/08/03 22:00:38 by luma             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,9 @@ INC = inc/
 SRCS =	main.cpp			\
 		Bureaucrat.cpp		\
 		AForm.cpp			\
-		ShrubberyCreationForm.cpp
+		ShrubberyCreationForm.cpp	\
+		RobotomyRequestForm.cpp		\
+		PresidentialPardonForm.cpp
 
 SRC = $(addprefix $(SRC_DIR), $(SRCS))
 

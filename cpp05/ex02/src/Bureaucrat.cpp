@@ -6,7 +6,7 @@
 /*   By: luma <luma@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 14:50:26 by luma              #+#    #+#             */
-/*   Updated: 2024/08/03 20:16:27 by luma             ###   ########.fr       */
+/*   Updated: 2024/08/03 21:45:58 by luma             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ void Bureaucrat::signForm(AForm &form) {
 void Bureaucrat::executeForm(AForm const &form) {
 	try {
 		form.execute(*this);
-		cout << _name << " execute " << form.getName() << endl;
+		cout << _name << " executed " << form.getName() << endl;
 	}
 	catch (std::exception &e) {
 		cout << _name << " cannot execute " << form.getName() << " because: " << e.what() << endl;
