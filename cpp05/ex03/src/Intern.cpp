@@ -6,7 +6,7 @@
 /*   By: luma <luma@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/04 12:06:53 by luma              #+#    #+#             */
-/*   Updated: 2024/08/04 13:13:29 by luma             ###   ########.fr       */
+/*   Updated: 2024/08/04 18:09:41 by luma             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,14 @@
 
 Intern::Intern() {}
 
-Intern::Intern(const Intern &src) {(void)src;}
+Intern::Intern(const Intern &src) {
+	*this = src;
+}
 
 Intern &Intern::operator=(const Intern &src) {
-	(void)src;
+	if (this != &src) {
+		*this = src;
+	}
 	return *this;
 }
 
