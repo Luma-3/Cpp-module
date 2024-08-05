@@ -1,6 +1,7 @@
 {
 	"files.associations": {
 		"typeinfo": "cpp",
-		"ostream": "cpp"
+		"ostream": "cpp",
+		"new": "cpp"
 	}
 }

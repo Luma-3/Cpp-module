@@ -6,7 +6,7 @@
 /*   By: luma <luma@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/04 18:11:01 by luma              #+#    #+#             */
-/*   Updated: 2024/08/05 15:50:16 by luma             ###   ########.fr       */
+/*   Updated: 2024/08/05 16:06:23 by luma             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <cmath>
 #include <cstdlib>
 #include <limits>
+#include <iomanip>
 
 
 using std::cout;
@@ -207,6 +208,7 @@ void ScalarConverter::convert(const string str) {
 		convertedNumber = strtold(str.c_str(), NULL);
 	}
 
+	cout << std::fixed << std::setprecision(1);
 	printChar(convertedNumber);
 	printInt(convertedNumber);
 	printFloat(convertedNumber);
