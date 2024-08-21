@@ -6,7 +6,7 @@
 /*   By: jbrousse <jbrousse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 15:44:39 by jbrousse          #+#    #+#             */
-/*   Updated: 2024/07/10 13:56:24 by jbrousse         ###   ########.fr       */
+/*   Updated: 2024/08/21 14:47:00 by jbrousse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 using std::cout;
 using std::endl;
+using std::string;
 
 ScavTrap::ScavTrap() : ClapTrap() {
 	cout << "ScavTrap constructor called" << endl;

@@ -6,7 +6,7 @@
 /*   By: jbrousse <jbrousse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 14:14:41 by jbrousse          #+#    #+#             */
-/*   Updated: 2024/07/10 15:07:03 by jbrousse         ###   ########.fr       */
+/*   Updated: 2024/08/21 14:48:44 by jbrousse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 
 using std::cout;
 using std::endl;
+using std::string;
 
 FragTrap::FragTrap() : ClapTrap() {
 	cout << "FragTrap constructor called" << endl;

@@ -6,7 +6,7 @@
 /*   By: jbrousse <jbrousse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 16:58:02 by jbrousse          #+#    #+#             */
-/*   Updated: 2024/07/11 10:31:54 by jbrousse         ###   ########.fr       */
+/*   Updated: 2024/08/21 14:48:41 by jbrousse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 
 using std::cout;
 using std::endl;
+using std::string;
 
 DiamondTrap::DiamondTrap() : ClapTrap(), ScavTrap(), FragTrap(), _name("none") {
 		cout << "DiamondTrap constructor called" << endl;

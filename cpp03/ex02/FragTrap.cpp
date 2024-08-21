@@ -6,7 +6,7 @@
 /*   By: jbrousse <jbrousse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 14:14:41 by jbrousse          #+#    #+#             */
-/*   Updated: 2024/07/10 15:07:03 by jbrousse         ###   ########.fr       */
+/*   Updated: 2024/08/21 14:46:20 by jbrousse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ FragTrap::~FragTrap() {
 	cout << "FragTrap destructor called" << endl;
 }
 
-FragTrap::FragTrap(const string &name) : ClapTrap(name)
+FragTrap::FragTrap(const std::string &name) : ClapTrap(name)
 {
 	cout << "FragTrap constructor param called" << endl;
 	_hit_point = 100;

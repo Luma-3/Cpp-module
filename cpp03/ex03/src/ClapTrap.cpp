@@ -6,7 +6,7 @@
 /*   By: jbrousse <jbrousse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 10:33:44 by jbrousse          #+#    #+#             */
-/*   Updated: 2024/07/10 13:56:43 by jbrousse         ###   ########.fr       */
+/*   Updated: 2024/08/21 14:48:38 by jbrousse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 
 using std::cout;
 using std::endl;
+using std::string;
 
 ClapTrap::ClapTrap() : _name("none"), _hit_point(0), _energy_point(0), _attack_damage(0) {
 	cout << "ClapTrap constructor called" << endl;
