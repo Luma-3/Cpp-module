@@ -3,14 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   Character.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luma <luma@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: jbrousse <jbrousse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/11 17:23:16 by jbrousse          #+#    #+#             */
-/*   Updated: 2024/07/11 23:12:07 by luma             ###   ########.fr       */
+/*   Updated: 2024/08/21 14:56:31 by jbrousse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Character.hpp"
+
+using std::string;
 
 Character::Character() : _name("unknown")
 {

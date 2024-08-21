@@ -3,11 +3,9 @@
 
 #include <string>
 
-using std::string;
-
 class Animal {
 protected:
-	string type;
+	std::string type;
 
 public:
 	Animal();
@@ -17,7 +15,7 @@ public:
 
 	virtual void makeSound(void) const;
 
-	string getType(void) const;
+	std::string getType(void) const;
 
 };
 

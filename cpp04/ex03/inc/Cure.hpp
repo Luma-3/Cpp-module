@@ -7,9 +7,6 @@
 
 #include <iostream>
 
-using std::cout;
-using std::endl;
-
 class Cure : public AMateria {
 
 public:

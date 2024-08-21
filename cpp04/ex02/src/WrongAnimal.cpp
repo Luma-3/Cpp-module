@@ -6,7 +6,7 @@
 /*   By: jbrousse <jbrousse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/11 11:09:01 by jbrousse          #+#    #+#             */
-/*   Updated: 2024/07/11 12:22:07 by jbrousse         ###   ########.fr       */
+/*   Updated: 2024/08/21 14:55:24 by jbrousse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 
 using std::cout;
 using std::endl;
+using std::string;
 
 WrongAnimal::WrongAnimal() : type("none"){
 	cout << "WrongAnimal Constructor called" << endl;
