@@ -6,7 +6,7 @@
 /*   By: jbrousse <jbrousse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 12:35:12 by jbrousse          #+#    #+#             */
-/*   Updated: 2024/07/08 12:23:56 by jbrousse         ###   ########.fr       */
+/*   Updated: 2024/08/21 14:39:44 by jbrousse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 # define FIXED_HPP
 
 #include <ostream>
-
-using std::ostream;
 
 class Fixed
 {
@@ -65,6 +63,6 @@ public:
 	static Fixed& max(Fixed &var1, Fixed &var2);
 };
 
-ostream &operator<<(ostream &out, const Fixed &fixed);
+std::ostream &operator<<(std::ostream &out, const Fixed &fixed);
 
 #endif
