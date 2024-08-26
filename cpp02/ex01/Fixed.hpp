@@ -6,7 +6,7 @@
 /*   By: jbrousse <jbrousse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 12:35:12 by jbrousse          #+#    #+#             */
-/*   Updated: 2024/08/21 14:39:20 by jbrousse         ###   ########.fr       */
+/*   Updated: 2024/08/26 09:23:41 by jbrousse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ public:
 	int getRawBits(void) const;
 	void setRawBits (int const raw);
 	float toFloat(void) const;
-	float toInt(void) const;
+	int toInt(void) const;
 };
 
 std::ostream &operator<<(std::ostream &out, const Fixed &fixed);

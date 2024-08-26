@@ -6,14 +6,13 @@
 /*   By: jbrousse <jbrousse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 12:25:36 by jbrousse          #+#    #+#             */
-/*   Updated: 2024/07/09 11:15:59 by jbrousse         ###   ########.fr       */
+/*   Updated: 2024/08/22 10:20:40 by jbrousse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
 
 #include <iostream>
-// #include <string>
 
 using std::cout;
 using std::endl;

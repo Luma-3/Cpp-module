@@ -6,7 +6,7 @@
 /*   By: jbrousse <jbrousse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 12:25:36 by jbrousse          #+#    #+#             */
-/*   Updated: 2024/07/09 11:14:56 by jbrousse         ###   ########.fr       */
+/*   Updated: 2024/08/26 09:23:52 by jbrousse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ float Fixed::toFloat(void) const
 	return ((float)(_value) / (1 << _frac_bits));
 }
 
-float Fixed::toInt(void) const
+int Fixed::toInt(void) const
 {
 	return (_value >> _frac_bits);
 }
