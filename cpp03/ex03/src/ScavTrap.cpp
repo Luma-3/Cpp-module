@@ -6,7 +6,7 @@
 /*   By: jbrousse <jbrousse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 15:44:39 by jbrousse          #+#    #+#             */
-/*   Updated: 2024/08/21 14:48:47 by jbrousse         ###   ########.fr       */
+/*   Updated: 2024/08/28 10:42:57 by jbrousse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ ScavTrap::ScavTrap(const ScavTrap & src) : ClapTrap(src) {
 ScavTrap & ScavTrap::operator=(const ScavTrap & src) {
 	cout << "ScavTrap affectation operator called" << endl;
 	if (this != &src) {
-		_name = src._name;
 		_hit_point = src._hit_point;
 		_energy_point = src._energy_point;
 		_attack_damage = src._attack_damage;

@@ -6,46 +6,72 @@
 /*   By: jbrousse <jbrousse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 14:20:07 by jbrousse          #+#    #+#             */
-/*   Updated: 2024/07/10 12:44:08 by jbrousse         ###   ########.fr       */
+/*   Updated: 2024/08/28 09:50:58 by jbrousse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 
+#include <iostream>
+
+using std::cout;
+using std::endl;
+
 int main(void)
 {
-	ClapTrap warrior;
-	warrior.setAttackDamage(5);
-	warrior.setHitPoint(10);
-	warrior.setEnergyPoint(5);
-	warrior.setName("Gorge");
+	ClapTrap Default;
 
-	ClapTrap armoredWarrior("Michel");
-	armoredWarrior.setAttackDamage(5);
-	armoredWarrior.setHitPoint(50);
+	ClapTrap a("Michel");
+
+	ClapTrap b("Jean");
+
+	cout << "----------------" << endl << endl;
+
+	a.attack("Jean");
+	b.takeDamage(a.getAttackDamage());
+	b.beRepaired(5);
+	b.attack("Michel");
+	a.takeDamage(b.getAttackDamage());
+
+	cout << "Name a: " << a.getName() << endl;
+	cout << "----------------" << endl;
+	cout << "Attack a: " << a.getAttackDamage() << endl;
+	cout << "Hit point a: " << a.getHitPoint() << endl;
+	cout << "Energy point a: " << a.getEnergyPoint() << endl;
+	cout << "----------------" << endl << endl;
 	
-	ClapTrap warrior2(warrior);
+	cout << "Name b: " << b.getName() << endl;
+	cout << "----------------" << endl;
+	cout << "Attack b: " << b.getAttackDamage() << endl;
+	cout << "Hit point b: " << b.getHitPoint() << endl;
+	cout << "Energy point b: " << b.getEnergyPoint() << endl;
+	cout << "----------------" << endl;
+
+	cout << "----------------" << endl;
+	cout << "Limit test" << endl;
+	cout << "----------------" << endl;
 	
-	warrior2.setName("Jack");
+	ClapTrap c("Jean");
+	c.takeDamage(10);
+	c.takeDamage(10);
+	cout << "Hit point c: " << c.getHitPoint() << endl;
 
-	ClapTrap armoredWarrior2;
-	armoredWarrior2 = armoredWarrior;
+	ClapTrap d("Jean");
+	d.attack("Michel");
+	d.attack("Michel");
+	d.attack("Michel");
+	d.attack("Michel");
+	d.attack("Michel");
+	d.attack("Michel");
+	d.attack("Michel");
+	d.attack("Michel");
+	d.attack("Michel");
+	d.attack("Michel");
+	d.attack("Michel");
+	cout << d.getEnergyPoint() << endl;
 
-	armoredWarrior2.setName("val");
+	cout << "----------------" << endl << endl;
 	
-	warrior2.setAttackDamage(10);
-
-	warrior.attack("Michel");
-	armoredWarrior.takeDamage(warrior.getAttackDamage());
-	armoredWarrior.beRepaired(5);
-
-	armoredWarrior2.attack("Jack");
-	warrior2.takeDamage(armoredWarrior2.getAttackDamage());
-
-	warrior2.attack("Gorge");
-	warrior.takeDamage(warrior2.getAttackDamage());
-
-	warrior.attack("Michel");
 
 	return 0;
 }

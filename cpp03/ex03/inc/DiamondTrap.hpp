@@ -8,7 +8,7 @@
 
 class DiamondTrap : public ScavTrap, public FragTrap {
 private:
-	std::string _name;
+	const std::string _name;
 
 public:
 	DiamondTrap();

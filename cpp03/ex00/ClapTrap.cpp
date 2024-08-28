@@ -6,7 +6,7 @@
 /*   By: jbrousse <jbrousse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 10:33:44 by jbrousse          #+#    #+#             */
-/*   Updated: 2024/08/21 14:47:45 by jbrousse         ###   ########.fr       */
+/*   Updated: 2024/08/28 10:06:00 by jbrousse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,8 @@ ClapTrap::ClapTrap(const ClapTrap & src) :
 ClapTrap & ClapTrap::operator=(const ClapTrap & src) {
 	cout << "ClapTrap affectation operator called" << endl;
 	if (this != &src) {
-		_name = src._name;
 		_hit_point = src._hit_point;
 		_energy_point = src._energy_point;
-		_attack_damage = src._attack_damage;
 	}
 	return *this;
 }
@@ -70,19 +68,19 @@ void ClapTrap::takeDamage(unsigned int amount)
 		cout << "ClapTrap is already dead!" << endl;
 		return;
 	}
-	_hit_point -= amount;
+	_hit_point = (_hit_point > amount) ? _hit_point - amount : 0;
 	cout << "ClapTrap " << _name << " took " << amount << " Damage point ! Ooouf!" << endl;
 }
 
 void ClapTrap::beRepaired(unsigned int amount)
 {
-	if (_energy_point == 0)
+	if (_energy_point <= 0)
 	{
 		cout << "ClapTrap " << _name << " does not have enough energy to repair itself." << endl;
 		return;
 
 	}
-	if (_hit_point == 0)
+	if (_hit_point <= 0)
 	{
 		cout << "ClapTrap " << _name << " is already dead!" << endl;
 		return;
@@ -97,36 +95,7 @@ ClapTrap::ClapTrap(const string &name) : _name(name), _hit_point(10), _energy_po
 	cout << "ClapTrap constructor param called" << endl;
 }
 
-ClapTrap::ClapTrap(const string &name, unsigned int hit_point, unsigned int energy_point, unsigned int attack_damage) :
-	_name(name),
-	_hit_point(hit_point),
-	_energy_point(energy_point),
-	_attack_damage(attack_damage)
-{
-	cout << "ClapTrap constructor param called" << endl;
-}
-
-void ClapTrap::setName(const string &name)
-{
-	_name = name;
-}
-
-void ClapTrap::setHitPoint(unsigned int hit_point)
-{
-	_hit_point = hit_point;
-}
-
-void ClapTrap::setEnergyPoint(unsigned int energy_point)
-{
-	_energy_point = energy_point;
-}
-
-void ClapTrap::setAttackDamage(unsigned int attack_damage)
-{
-	_attack_damage = attack_damage;
-}
-
-string ClapTrap::getName(void) const
+const string &ClapTrap::getName(void) const
 {
 	return _name;
 }

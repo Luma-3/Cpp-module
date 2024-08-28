@@ -6,14 +6,14 @@
 #    By: jbrousse <jbrousse@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/04 23:30:42 by jbrousse          #+#    #+#              #
-#    Updated: 2024/07/11 10:49:22 by jbrousse         ###   ########.fr        #
+#    Updated: 2024/08/28 11:11:30 by jbrousse         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -Wshadow -std=c++98 -I $(INC)
 
-NAME = Warrior
+NAME = Trap
 
 SRC_DIR = src/
 
