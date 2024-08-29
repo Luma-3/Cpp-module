@@ -6,7 +6,7 @@
 /*   By: jbrousse <jbrousse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/11 11:33:29 by jbrousse          #+#    #+#             */
-/*   Updated: 2024/07/11 12:29:12 by jbrousse         ###   ########.fr       */
+/*   Updated: 2024/08/28 12:30:49 by jbrousse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ int main (void)
 	const Animal* j = new Dog();
 	const Animal* i = new Cat();
 	const WrongAnimal* k = new WrongCat();
+	const WrongCat* l = new WrongCat();
 	
 	cout << endl;
 
@@ -39,6 +40,8 @@ int main (void)
 	j->makeSound();
 	meta->makeSound();
 	k->makeSound();
+	l->makeSound();
+	
 
 	cout << endl;
 

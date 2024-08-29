@@ -12,7 +12,7 @@ public:
 	WrongCat & operator=(const WrongCat & src);
 	~WrongCat();
 
-	virtual void makeSound(void) const;
+	void makeSound(void) const;
 
 };
 
