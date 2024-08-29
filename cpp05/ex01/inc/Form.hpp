@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Form.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luma <luma@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: jbrousse <jbrousse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 13:53:49 by luma              #+#    #+#             */
-/*   Updated: 2024/08/03 13:48:11 by luma             ###   ########.fr       */
+/*   Updated: 2024/08/29 13:31:13 by jbrousse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,6 @@
 
 #include "Bureaucrat.hpp"
 
-using std::string;
-using std::ostream;
-
 class Bureaucrat;
 
 class Form
@@ -31,11 +28,11 @@ public:
 	Form &operator=(const Form &src);
 	~Form();
 
-	Form(const string name, const int grade_sign, const int grade_exec);
+	Form(const std::string name, const int grade_sign, const int grade_exec);
 
 	// Getters
 	
-	string	getName() const;
+	std::string	getName() const;
 	bool	isSigned() const;
 	int		getGradeToSign() const;
 	int		getGradeToExecute() const;
@@ -53,12 +50,12 @@ public:
 	};
 
 private:
-	const string _name;
+	const std::string _name;
 	bool _is_signed;
 	const int _grade_to_sign;
 	const int _grade_to_execute;
 };
 
-ostream &operator<<(ostream& out, const Form &form);
+std::ostream &operator<<(std::ostream& out, const Form &form);
 
 #endif // FORM_HPP

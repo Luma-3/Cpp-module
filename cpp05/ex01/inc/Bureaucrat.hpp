@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luma <luma@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: jbrousse <jbrousse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 14:16:33 by luma              #+#    #+#             */
-/*   Updated: 2024/08/03 13:49:05 by luma             ###   ########.fr       */
+/*   Updated: 2024/08/29 12:56:59 by jbrousse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,6 @@
 
 #include "Form.hpp"
 
-using std::string;
-using std::ostream;
-
 class Form;
 
 class Bureaucrat
@@ -31,10 +28,10 @@ public:
 	Bureaucrat &operator=(const Bureaucrat &bureaucrat);	
 	~Bureaucrat();
 
-	Bureaucrat(const string &name, const unsigned int grade);
+	Bureaucrat(const std::string &name, const unsigned int grade);
 	
 	int getGrade() const;
-	string getName() const;
+	std::string getName() const;
 
 	void promotion();
 	void demotion();
@@ -53,11 +50,11 @@ public:
 	
 
 private:
-	const string _name;
+	const std::string _name;
 	unsigned int _grade;
 };
 
-ostream &operator<<(ostream &out, const Bureaucrat &bureaucrat);
+std::ostream &operator<<(std::ostream &out, const Bureaucrat &bureaucrat);
 
 
 

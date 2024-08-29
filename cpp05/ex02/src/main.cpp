@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luma <luma@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: jbrousse <jbrousse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 15:09:24 by luma              #+#    #+#             */
-/*   Updated: 2024/08/03 22:18:07 by luma             ###   ########.fr       */
+/*   Updated: 2024/08/29 13:35:37 by jbrousse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 
 using std::cout;
 using std::endl;
-using std::cerr;
+using std::string;
 
 #define RED "\033[31m"
 #define GREEN "\033[32m"

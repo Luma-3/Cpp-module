@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luma <luma@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: jbrousse <jbrousse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 14:50:26 by luma              #+#    #+#             */
-/*   Updated: 2024/08/03 21:45:58 by luma             ###   ########.fr       */
+/*   Updated: 2024/08/29 12:45:49 by jbrousse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,9 @@
 
 using std::cout;
 using std::endl;
-using std::cerr;
+using std::string;
+using std::ostream;
+
 
 Bureaucrat::Bureaucrat() : _name("unknown"), _grade(150) {}
 

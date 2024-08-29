@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luma <luma@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: jbrousse <jbrousse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 14:50:26 by luma              #+#    #+#             */
-/*   Updated: 2024/08/03 13:31:53 by luma             ###   ########.fr       */
+/*   Updated: 2024/08/29 13:36:50 by jbrousse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ Bureaucrat &Bureaucrat::operator=(const Bureaucrat &bureaucrat) {
 
 Bureaucrat::~Bureaucrat() {}
 
-Bureaucrat::Bureaucrat(const string &name, const unsigned int grade) : _name(name) {
+Bureaucrat::Bureaucrat(const std::string &name, const unsigned int grade) : _name(name) {
 	if (grade < 1) {
 		throw (GradeTooHighException());
 	}
@@ -48,7 +48,7 @@ int Bureaucrat::getGrade() const {
 	return (_grade);
 }
 
-string Bureaucrat::getName() const {
+std::string Bureaucrat::getName() const {
 	return (_name);
 }
 
@@ -87,7 +87,7 @@ void Bureaucrat::signForm(Form &form) {
 }
 
 
-ostream &operator<<(ostream &out, const Bureaucrat &bureaucrat) {
+std::ostream &operator<<(std::ostream &out, const Bureaucrat &bureaucrat) {
 	out << bureaucrat.getName() << ", bureaucrat grade " << bureaucrat.getGrade();
 
 	return (out);

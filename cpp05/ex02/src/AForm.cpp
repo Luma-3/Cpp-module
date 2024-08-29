@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   AForm.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luma <luma@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: jbrousse <jbrousse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 16:45:04 by luma              #+#    #+#             */
-/*   Updated: 2024/08/03 21:44:11 by luma             ###   ########.fr       */
+/*   Updated: 2024/08/29 12:54:10 by jbrousse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "AForm.hpp"
 
 using std::endl;
+using std::string;
 
 AForm::AForm() :
 	_name("unknown"),
@@ -109,7 +110,7 @@ void AForm::checkExectionRequirement(Bureaucrat const & executor) const {
 }
 
 
-ostream &operator<<(ostream& out, const AForm &form) {
+std::ostream &operator<<(std::ostream& out, const AForm &form) {
 	out << "Form " << form.getName();
 
 	if (form.isSigned() == true) {

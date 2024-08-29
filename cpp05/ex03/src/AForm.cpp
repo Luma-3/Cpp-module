@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   AForm.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luma <luma@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: jbrousse <jbrousse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 16:45:04 by luma              #+#    #+#             */
-/*   Updated: 2024/08/03 21:44:11 by luma             ###   ########.fr       */
+/*   Updated: 2024/08/29 12:54:26 by jbrousse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "AForm.hpp"
 
-using std::endl;
+using std::string;
 
 AForm::AForm() :
 	_name("unknown"),
@@ -109,17 +109,17 @@ void AForm::checkExectionRequirement(Bureaucrat const & executor) const {
 }
 
 
-ostream &operator<<(ostream& out, const AForm &form) {
+std::ostream &operator<<(std::ostream& out, const AForm &form) {
 	out << "Form " << form.getName();
 
 	if (form.isSigned() == true) {
-		out << "is Signed." << endl;
+		out << "is Signed." << std::endl;
 	}
 	else {
-		out << "isn't Signed." << endl;
+		out << "isn't Signed." << std::endl;
 	}
 	
-	out << "Minimum Grade to sign form is: " << form.getGradeToSign()<< endl;
-	out << "Minimum Grade to Execute form is: " << form.getGradeToExecute() << endl;
+	out << "Minimum Grade to sign form is: " << form.getGradeToSign()<< std::endl;
+	out << "Minimum Grade to Execute form is: " << form.getGradeToExecute() << std::endl;
 	return (out);
 }

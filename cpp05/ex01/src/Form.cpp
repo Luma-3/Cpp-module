@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Form.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luma <luma@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: jbrousse <jbrousse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 16:45:04 by luma              #+#    #+#             */
-/*   Updated: 2024/08/03 14:07:36 by luma             ###   ########.fr       */
+/*   Updated: 2024/08/29 13:37:36 by jbrousse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ Form::~Form() {
 
 }
 
-Form::Form(const string name, const int grade_sign, const int grade_exec) :
+Form::Form(const std::string name, const int grade_sign, const int grade_exec) :
 	_name(name),
 	_is_signed(false),
 	_grade_to_sign(grade_sign),
@@ -55,7 +55,7 @@ Form::Form(const string name, const int grade_sign, const int grade_exec) :
 	}
 }
 
-string Form::getName() const {
+std::string Form::getName() const {
 	return (_name);
 }
 
@@ -89,7 +89,7 @@ const char *Form::GradeTooLowException::what() const throw() {
 }
 
 
-ostream &operator<<(ostream& out, const Form &form) {
+std::ostream &operator<<(std::ostream& out, const Form &form) {
 	out << "Form " << form.getName();
 
 	if (form.isSigned() == true) {

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Intern.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luma <luma@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: jbrousse <jbrousse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/04 12:06:53 by luma              #+#    #+#             */
-/*   Updated: 2024/08/04 18:09:41 by luma             ###   ########.fr       */
+/*   Updated: 2024/08/29 12:49:03 by jbrousse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 #include "PresidentialPardonForm.hpp"
 
 #include <iostream>
+
+using std::string;
 
 Intern::Intern() {}
 
