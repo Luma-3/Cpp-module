@@ -6,7 +6,7 @@
 /*   By: jbrousse <jbrousse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 16:45:04 by luma              #+#    #+#             */
-/*   Updated: 2024/08/29 12:54:26 by jbrousse         ###   ########.fr       */
+/*   Updated: 2024/08/29 15:30:50 by jbrousse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,10 @@ string AForm::getTarget() const {
 }
 
 void AForm::beSigned(const Bureaucrat bureaucrat) {
-	if (bureaucrat.getGrade() <= _grade_to_sign){
+	if (_is_signed == true) {
+		throw (FormAlreadySignedException());
+	}
+	else if (bureaucrat.getGrade() <= _grade_to_sign) {
 		_is_signed = true;
 	}
 	else {
@@ -97,6 +100,10 @@ const char *AForm::GradeTooLowException::what() const throw() {
 
 const char *AForm::FormNotSignedExecption::what() const throw() {
 	return ("Form is not signed");
+}
+
+const char *AForm::FormAlreadySignedException::what() const throw() {
+	return ("Form is already signed");
 }
 
 void AForm::checkExectionRequirement(Bureaucrat const & executor) const {

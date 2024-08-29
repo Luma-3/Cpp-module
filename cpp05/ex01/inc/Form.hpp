@@ -6,7 +6,7 @@
 /*   By: jbrousse <jbrousse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 13:53:49 by luma              #+#    #+#             */
-/*   Updated: 2024/08/29 13:31:13 by jbrousse         ###   ########.fr       */
+/*   Updated: 2024/08/29 15:26:35 by jbrousse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,12 @@ public:
 	public:
 		virtual const char *what() const throw();	
 	};
+
+	class FormAlreadySignedException : public std::exception {
+	public:
+		virtual const char *what() const throw();
+	};
+	
 
 private:
 	const std::string _name;

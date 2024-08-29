@@ -6,7 +6,7 @@
 /*   By: jbrousse <jbrousse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 14:50:26 by luma              #+#    #+#             */
-/*   Updated: 2024/08/29 13:36:50 by jbrousse         ###   ########.fr       */
+/*   Updated: 2024/08/29 15:23:18 by jbrousse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,13 +82,13 @@ void Bureaucrat::signForm(Form &form) {
 		cout << _name << " signed " << form.getName() << endl;
 	}
 	catch (std::exception &e) {
-		cout << _name << " couldn't sign " << form.getName() << " because " << e.what() << endl;
+		cout << _name << " couldn't sign " << form.getName() << " because " << e.what() << "." << endl;
 	}
 }
 
 
 std::ostream &operator<<(std::ostream &out, const Bureaucrat &bureaucrat) {
-	out << bureaucrat.getName() << ", bureaucrat grade " << bureaucrat.getGrade();
+	out << bureaucrat.getName() << ", bureaucrat grade " << bureaucrat.getGrade() << ".";
 
 	return (out);
 }

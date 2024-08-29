@@ -6,7 +6,7 @@
 /*   By: jbrousse <jbrousse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 14:50:26 by luma              #+#    #+#             */
-/*   Updated: 2024/08/29 12:56:21 by jbrousse         ###   ########.fr       */
+/*   Updated: 2024/08/29 15:23:33 by jbrousse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,13 +91,13 @@ void Bureaucrat::executeForm(AForm const &form) {
 		cout << _name << " executed " << form.getName() << endl;
 	}
 	catch (std::exception &e) {
-		cout << _name << " cannot execute " << form.getName() << " because: " << e.what() << endl;
+		cout << _name << " cannot execute " << form.getName() << " because: " << e.what() << "." << endl;
 	}
 }
 
 
 std::ostream &operator<<(std::ostream &out, const Bureaucrat &bureaucrat) {
-	out << bureaucrat.getName() << ", bureaucrat grade " << bureaucrat.getGrade();
+	out << bureaucrat.getName() << ", bureaucrat grade " << bureaucrat.getGrade() << ".";
 
 	return (out);
 }

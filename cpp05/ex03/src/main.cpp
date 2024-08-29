@@ -6,7 +6,7 @@
 /*   By: jbrousse <jbrousse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 15:09:24 by luma              #+#    #+#             */
-/*   Updated: 2024/08/29 13:35:57 by jbrousse         ###   ########.fr       */
+/*   Updated: 2024/08/29 15:09:05 by jbrousse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,15 +31,6 @@ using std::string;
 									cout << RED << "[ KO ]" << endl << "Expected: " << b << " | Got: " << a << endl << RESET)
 
 #define TEST(id, name, code) cout << YELLOW << "Test " << id << ": " << name << RESET << endl; code
-
-#define EXPECT_OUTPUT_EQ(code, expected_output) { \
-    std::streambuf* old_buf = std::cout.rdbuf(); \
-    std::ostringstream capture; \
-    std::cout.rdbuf(capture.rdbuf()); \
-    code; \
-    std::cout.rdbuf(old_buf); \
-    EXPECT_EQ(capture.str(), expected_output); \
-}
 
 int main(void)
 {
