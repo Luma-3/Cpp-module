@@ -6,14 +6,14 @@
 #    By: jbrousse <jbrousse@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/04 23:30:42 by jbrousse          #+#    #+#              #
-#    Updated: 2024/07/11 18:47:01 by jbrousse         ###   ########.fr        #
+#    Updated: 2024/08/28 13:39:10 by jbrousse         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -Wshadow -Wunused -std=c++98 -I $(INC)
 
-NAME = animal
+NAME = Materia
 
 SRC_DIR = src/
 
