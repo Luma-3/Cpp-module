@@ -6,7 +6,7 @@
 /*   By: jbrousse <jbrousse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/11 17:23:16 by jbrousse          #+#    #+#             */
-/*   Updated: 2024/08/29 10:38:52 by jbrousse         ###   ########.fr       */
+/*   Updated: 2024/08/29 12:27:33 by jbrousse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ using std::string;
 using std::cout;
 using std::endl;
 
+#define MAX_INVENTORY 4
+
 #define RED "\033[31m"
 #define GREEN "\033[32m"
 #define YELLOW "\033[33m"
@@ -26,7 +28,7 @@ using std::endl;
 Character::Character() : _name("unknown")
 {
 	cout << GREEN << "Character created by Default constructor" << RESET << endl;
-	for (size_t i = 0; i < 4; i++)
+	for (size_t i = 0; i < MAX_INVENTORY; i++)
 	{
 		inventory[i] = NULL;
 	}
@@ -35,7 +37,7 @@ Character::Character() : _name("unknown")
 Character::Character(std::string name) : _name(name)
 {
 	cout << GREEN << "Character created by Param constructor" << RESET << endl;
-	for (size_t i = 0; i < 4; i++)
+	for (size_t i = 0; i < MAX_INVENTORY; i++)
 	{
 		inventory[i] = NULL;
 	}
@@ -45,7 +47,7 @@ Character::Character(std::string name) : _name(name)
 Character::Character(const Character &src) : _name(src._name)
 {
 	cout << GREEN << "Character created by Copy constructor" << RESET << endl;
-	for (size_t i = 0; i < 4; i++)
+	for (size_t i = 0; i < MAX_INVENTORY; i++)
 	{
 		delete inventory[i];
 		inventory[i] = src.inventory[i]->clone();
@@ -58,7 +60,7 @@ Character &Character::operator=(const Character &src)
 	if (this != &src)
 	{
 		_name = src._name;
-		for (size_t i = 0; i < 4; i++)
+		for (size_t i = 0; i < MAX_INVENTORY; i++)
 		{
 			delete inventory[i];
 			inventory[i] = src.inventory[i]->clone();
@@ -70,7 +72,7 @@ Character &Character::operator=(const Character &src)
 Character::~Character()
 {
 	cout << RED << "Character destroyed" << RESET << endl;
-	for (size_t i = 0; i < 4; i++)
+	for (size_t i = 0; i < MAX_INVENTORY; i++)
 	{
 		delete inventory[i];
 	}
@@ -83,7 +85,7 @@ string const &Character::getName() const
 
 void Character::equip(AMateria *m)
 {
-	for (size_t i = 0; i < 4; i++)
+	for (size_t i = 0; i < MAX_INVENTORY; i++)
 	{
 		if (inventory[i] == NULL)
 		{

@@ -6,7 +6,7 @@
 /*   By: jbrousse <jbrousse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/11 11:33:29 by jbrousse          #+#    #+#             */
-/*   Updated: 2024/08/28 12:30:49 by jbrousse         ###   ########.fr       */
+/*   Updated: 2024/08/29 12:24:08 by jbrousse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ int main (void)
 	delete j;
 	delete i;
 	delete k;
+	delete l;
 
 	return (0);
 }

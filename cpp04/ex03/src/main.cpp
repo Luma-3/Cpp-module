@@ -6,7 +6,7 @@
 /*   By: jbrousse <jbrousse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/11 18:43:49 by jbrousse          #+#    #+#             */
-/*   Updated: 2024/08/29 10:43:57 by jbrousse         ###   ########.fr       */
+/*   Updated: 2024/08/29 12:23:21 by jbrousse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,9 @@ int main()
 	src->learnMateria(new Ice());
 	src->learnMateria(new Cure());
 
-	cout << endl << GREEN << "-------------------------" << endl;
+	cout << endl << GREEN << "------------------------------------" << endl;
 	cout << "Create a Character and equip Materia" << endl;
-	cout << "-------------------------" << RESET << endl << endl;
+	cout << "------------------------------------" << RESET << endl << endl;
 	
 	ICharacter* me = new Character("me");
 	
@@ -50,21 +50,6 @@ int main()
 	AMateria* tmp2;
 	tmp2 = src->createMateria("cure");
 	me->equip(tmp2);
-
-	// cout << GREEN << "-------------------------" << endl;
-	// cout << "Test with a clone Materia" << endl;
-	// cout << "-------------------------" << RESET << endl;
-	
-	// AMateria* clone = tmp2->clone();
-
-	// cout << "Type of the clone : " << clone->getType() << endl;
-	
-	// delete clone;
-
-	// cout << RED <<"-------------------------" << endl;
-	// cout << "End Clone Test" << endl;
-	// cout << "-------------------------" << RESET << endl;
-
 
 	cout << endl << GREEN << "-------------------------" << endl;
 	cout << "Use Materia" << endl;
