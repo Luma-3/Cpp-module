@@ -3,11 +3,9 @@
 
 #include <string>
 
-using std::string;
-
 class WrongAnimal {
 protected:
-	string type;
+	std::string type;
 
 public:
 	WrongAnimal();
@@ -15,9 +13,9 @@ public:
 	WrongAnimal & operator=(const WrongAnimal & src);
 	virtual ~WrongAnimal();
 
-	virtual void makeSound(void) const;
+	void makeSound(void) const;
 
-	string getType(void) const;
+	std::string getType(void) const;
 
 };
 

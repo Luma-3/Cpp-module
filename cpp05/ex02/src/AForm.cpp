@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   AForm.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luma <luma@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: jbrousse <jbrousse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 16:45:04 by luma              #+#    #+#             */
-/*   Updated: 2024/08/03 21:44:11 by luma             ###   ########.fr       */
+/*   Updated: 2024/08/29 15:30:39 by jbrousse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "AForm.hpp"
 
 using std::endl;
+using std::string;
 
 AForm::AForm() :
 	_name("unknown"),
@@ -79,7 +80,10 @@ string AForm::getTarget() const {
 }
 
 void AForm::beSigned(const Bureaucrat bureaucrat) {
-	if (bureaucrat.getGrade() <= _grade_to_sign){
+	if (_is_signed == true) {
+		throw (FormAlreadySignedException());
+	}
+	else if (bureaucrat.getGrade() <= _grade_to_sign) {
 		_is_signed = true;
 	}
 	else {
@@ -99,6 +103,10 @@ const char *AForm::FormNotSignedExecption::what() const throw() {
 	return ("Form is not signed");
 }
 
+const char *AForm::FormAlreadySignedException::what() const throw() {
+	return ("Form is already signed");
+}
+
 void AForm::checkExectionRequirement(Bureaucrat const & executor) const {
 	if (_is_signed == false) {
 		throw (FormNotSignedExecption());
@@ -109,7 +117,7 @@ void AForm::checkExectionRequirement(Bureaucrat const & executor) const {
 }
 
 
-ostream &operator<<(ostream& out, const AForm &form) {
+std::ostream &operator<<(std::ostream& out, const AForm &form) {
 	out << "Form " << form.getName();
 
 	if (form.isSigned() == true) {

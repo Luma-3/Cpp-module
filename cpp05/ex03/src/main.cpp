@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luma <luma@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: jbrousse <jbrousse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 15:09:24 by luma              #+#    #+#             */
-/*   Updated: 2024/08/04 13:14:03 by luma             ###   ########.fr       */
+/*   Updated: 2024/08/29 15:09:05 by jbrousse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 using std::cout;
 using std::endl;
-using std::cerr;
+using std::string;
 
 #define RED "\033[31m"
 #define GREEN "\033[32m"
@@ -31,15 +31,6 @@ using std::cerr;
 									cout << RED << "[ KO ]" << endl << "Expected: " << b << " | Got: " << a << endl << RESET)
 
 #define TEST(id, name, code) cout << YELLOW << "Test " << id << ": " << name << RESET << endl; code
-
-#define EXPECT_OUTPUT_EQ(code, expected_output) { \
-    std::streambuf* old_buf = std::cout.rdbuf(); \
-    std::ostringstream capture; \
-    std::cout.rdbuf(capture.rdbuf()); \
-    code; \
-    std::cout.rdbuf(old_buf); \
-    EXPECT_EQ(capture.str(), expected_output); \
-}
 
 int main(void)
 {

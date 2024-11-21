@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luma <luma@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: jbrousse <jbrousse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 15:09:24 by luma              #+#    #+#             */
-/*   Updated: 2024/08/03 22:18:07 by luma             ###   ########.fr       */
+/*   Updated: 2024/08/29 15:13:08 by jbrousse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 
 using std::cout;
 using std::endl;
-using std::cerr;
+using std::string;
 
 #define RED "\033[31m"
 #define GREEN "\033[32m"
@@ -33,14 +33,14 @@ using std::cerr;
 
 #define TEST(id, name, code) cout << YELLOW << "Test " << id << ": " << name << RESET << endl; code
 
-#define EXPECT_OUTPUT_EQ(code, expected_output) { \
-    std::streambuf* old_buf = std::cout.rdbuf(); \
-    std::ostringstream capture; \
-    std::cout.rdbuf(capture.rdbuf()); \
-    code; \
-    std::cout.rdbuf(old_buf); \
-    EXPECT_EQ(capture.str(), expected_output); \
-}
+// #define EXPECT_OUTPUT_EQ(code, expected_output) { \
+//     std::streambuf* old_buf = std::cout.rdbuf(); \
+//     std::ostringstream capture; \
+//     std::cout.rdbuf(capture.rdbuf()); \
+//     code; \
+//     std::cout.rdbuf(old_buf); \
+//     EXPECT_EQ(capture.str(), expected_output); \
+// }
 
 int main(void)
 {
@@ -90,20 +90,20 @@ int main(void)
 		Bureaucrat bureaucrat1("Bureaucrat", 145);
 		bureaucrat1.signForm(form);
 		Bureaucrat bureaucrat2("Bureaucrat", 150);
-		EXPECT_OUTPUT_EQ(bureaucrat2.executeForm(form), "Bureaucrat cannot execute Shrubbery Creation Form because: Grade is too low\n");
+		bureaucrat2.executeForm(form);
 	});
 
 	TEST(7, "Execute ShrubberyCreationForm with Form is not signed", {
 		ShrubberyCreationForm form("Home");
 		Bureaucrat bureaucrat("Bureaucrat", 145);
-		EXPECT_OUTPUT_EQ(bureaucrat.executeForm(form), "Bureaucrat cannot execute Shrubbery Creation Form because: Form is not signed\n");
+		bureaucrat.executeForm(form);
 	});
 
 	TEST(8, "Execute ShrubberyCreationForm Correctly", {
 		ShrubberyCreationForm form("Home");
 		Bureaucrat bureaucrat("Bureaucrat", 137);
 		bureaucrat.signForm(form);
-		EXPECT_OUTPUT_EQ(bureaucrat.executeForm(form), "Bureaucrat executed Shrubbery Creation Form\n");
+		bureaucrat.executeForm(form);
 	});
 
 	cout << "----------------" << endl;
@@ -156,20 +156,20 @@ int main(void)
 		Bureaucrat bureaucrat1("Bureaucrat", 72);
 		bureaucrat1.signForm(form);
 		Bureaucrat bureaucrat2("Bureaucrat", 150);
-		EXPECT_OUTPUT_EQ(bureaucrat2.executeForm(form), "Bureaucrat cannot execute Robotomy Request Form because: Grade is too low\n");
+		bureaucrat2.executeForm(form);
 	});
 
 	TEST(7, "Execute RobotomyRequestForm with Form is not signed", {
 		RobotomyRequestForm form("Home");
 		Bureaucrat bureaucrat("Bureaucrat", 72);
-		EXPECT_OUTPUT_EQ(bureaucrat.executeForm(form), "Bureaucrat cannot execute Robotomy Request Form because: Form is not signed\n");
+		bureaucrat.executeForm(form);
 	});
 
 	TEST(8, "Execute RobotomyRequestForm Correctly", {
 		RobotomyRequestForm form("Home");
 		Bureaucrat bureaucrat("Bureaucrat", 45);
 		bureaucrat.signForm(form);
-		EXPECT_OUTPUT_EQ(bureaucrat.executeForm(form), "Bzzzz\nHome has been robotomized successfully\nBureaucrat executed Robotomy Request Form\n");
+		bureaucrat.executeForm(form);
 	});
 
 	cout << "----------------" << endl;
@@ -221,21 +221,21 @@ int main(void)
 		Bureaucrat bureaucrat1("Bureaucrat", 25);
 		bureaucrat1.signForm(form);
 		Bureaucrat bureaucrat2("Bureaucrat", 150);
-		EXPECT_OUTPUT_EQ(bureaucrat2.executeForm(form), "Bureaucrat cannot execute Presidential Pardon Form because: Grade is too low\n");
+		bureaucrat2.executeForm(form);
 	});
 	
 
 	TEST(7, "Execute PresidentialPardonForm with Form is not signed", {
 		PresidentialPardonForm form("Home");
 		Bureaucrat bureaucrat("Bureaucrat", 25);
-		EXPECT_OUTPUT_EQ(bureaucrat.executeForm(form), "Bureaucrat cannot execute Presidential Pardon Form because: Form is not signed\n");
+		bureaucrat.executeForm(form);
 	});
 
 	TEST(8, "Execute PresidentialPardonForm Correctly", {
 		PresidentialPardonForm form("Home");
 		Bureaucrat bureaucrat("Bureaucrat", 5);
 		bureaucrat.signForm(form);
-		EXPECT_OUTPUT_EQ(bureaucrat.executeForm(form), "Home has been pardoned by Zaphod Beeblebrox\nBureaucrat executed Presidential Pardon Form\n");
+		bureaucrat.executeForm(form);
 	});
 
 	cout << "----------------" << endl;

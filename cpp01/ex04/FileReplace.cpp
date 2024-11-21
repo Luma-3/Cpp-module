@@ -6,7 +6,7 @@
 /*   By: jbrousse <jbrousse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 13:55:14 by jbrousse          #+#    #+#             */
-/*   Updated: 2024/07/02 11:40:41 by jbrousse         ###   ########.fr       */
+/*   Updated: 2024/08/21 12:42:24 by jbrousse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int print_error()
 static string replace_line_ocs(string line, string s1, string s2) 
 {
 	if (line.empty())
-		return (NULL);
+		return ("\n");
 
 	string result;
 	

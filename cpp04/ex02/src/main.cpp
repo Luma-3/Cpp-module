@@ -6,7 +6,7 @@
 /*   By: jbrousse <jbrousse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/11 11:33:29 by jbrousse          #+#    #+#             */
-/*   Updated: 2024/07/11 13:07:58 by jbrousse         ###   ########.fr       */
+/*   Updated: 2024/08/28 13:34:25 by jbrousse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,19 @@
 
 #include <iostream>
 
+#define RED "\033[31m"
+#define GREEN "\033[32m"
+#define RESET "\033[0m"
+
 using std::cout;
 using std::endl;
 
 int main (void)
 {
+
+	cout << GREEN << "Dog and Cat class Test :" << endl;
+	cout << "-------------------------" << RESET << endl;
+	
 	const Animal* j = new Dog();
 	const Animal* i = new Cat();
 	const WrongAnimal* k = new WrongCat();
@@ -46,6 +54,10 @@ int main (void)
 
 	cout << endl;
 
+	cout << GREEN << "-------------------------" << endl;
+	cout << "Test with an array of Animal class" << endl;
+	cout << "-------------------------" << RESET << endl << endl;
+
 	Animal* tab[4] = {new Cat, new Cat, new Dog, new Dog};
 	cout << endl;
 	
@@ -54,6 +66,9 @@ int main (void)
 		delete tab[counter];
 		cout << endl;
 	}
+
+	cout << RED << "-------------------------" << endl;
+	cout << "End of the test" << RESET << endl;
 
 	return (0);
 }

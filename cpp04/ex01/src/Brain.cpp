@@ -6,7 +6,7 @@
 /*   By: jbrousse <jbrousse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/11 12:35:27 by jbrousse          #+#    #+#             */
-/*   Updated: 2024/07/11 12:39:18 by jbrousse         ###   ########.fr       */
+/*   Updated: 2024/08/29 12:26:32 by jbrousse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,9 @@ Brain::Brain() {
 
 Brain::Brain(const Brain & src) {
 	cout << "Brain copy constructor called" << endl;
-	*this = src;
+	for (int i = 0; i < 100; i++) {
+		this->ideas[i] = src.ideas[i];
+	}
 }
 
 Brain & Brain::operator=(const Brain & src) {

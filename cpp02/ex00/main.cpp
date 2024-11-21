@@ -6,13 +6,16 @@
 /*   By: jbrousse <jbrousse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 13:00:58 by jbrousse          #+#    #+#             */
-/*   Updated: 2024/07/03 13:01:24 by jbrousse         ###   ########.fr       */
+/*   Updated: 2024/08/22 12:51:25 by jbrousse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 
 #include "Fixed.hpp"
+
+using std::cout;
+using std::endl;
 
 int main( void ) 
 {
@@ -22,9 +25,13 @@ int main( void )
 	
 	c = b;
 	
-	std::cout << a.getRawBits() << std::endl;
-	std::cout << b.getRawBits() << std::endl;
-	std::cout << c.getRawBits() << std::endl;
+	cout << a.getRawBits() << endl;
+	cout << b.getRawBits() << endl;
+	cout << c.getRawBits() << endl;
+
+	a.setRawBits(34);
+
+	cout << a.getRawBits() << endl;
 	
 	return 0;
 }

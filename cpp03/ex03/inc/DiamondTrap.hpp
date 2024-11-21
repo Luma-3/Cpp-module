@@ -6,11 +6,9 @@
 #include "ScavTrap.hpp"
 #include "FragTrap.hpp"
 
-using std::string;
-
 class DiamondTrap : public ScavTrap, public FragTrap {
 private:
-	string _name;
+	const std::string _name;
 
 public:
 	DiamondTrap();
@@ -18,7 +16,7 @@ public:
 	DiamondTrap & operator=(const DiamondTrap & src);
 	~DiamondTrap();
 
-	DiamondTrap(const string &name);
+	DiamondTrap(const std::string &name);
 
 	void whoAmI(void);
 };

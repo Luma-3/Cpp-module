@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PresidentialPardonForm.cpp                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luma <luma@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: jbrousse <jbrousse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 22:00:13 by luma              #+#    #+#             */
-/*   Updated: 2024/08/03 22:00:28 by luma             ###   ########.fr       */
+/*   Updated: 2024/08/29 12:56:29 by jbrousse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ PresidentialPardonForm::PresidentialPardonForm() :
 	AForm("Presidential Pardon Form", "unknown", 25, 5)
 {}
 
-PresidentialPardonForm::PresidentialPardonForm(const string target) :
+PresidentialPardonForm::PresidentialPardonForm(const std::string target) :
 	AForm("Presidential Pardon Form", target, 25, 5)
 {}	
 

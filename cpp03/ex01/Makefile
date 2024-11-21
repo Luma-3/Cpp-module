@@ -6,14 +6,14 @@
 #    By: jbrousse <jbrousse@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/04 23:30:42 by jbrousse          #+#    #+#              #
-#    Updated: 2024/07/10 13:44:47 by jbrousse         ###   ########.fr        #
+#    Updated: 2024/08/28 10:16:08 by jbrousse         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98 -I.
 
-NAME = Warrior
+NAME = Trap
 
 SRCS =	main.cpp		\
 		ClapTrap.cpp	\

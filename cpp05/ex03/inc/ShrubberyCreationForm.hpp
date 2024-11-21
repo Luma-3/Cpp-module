@@ -5,14 +5,11 @@
 
 #include "AForm.hpp"
 
-using std::string;
-
-
 class ShrubberyCreationForm : public AForm
 {
 public:
 	ShrubberyCreationForm();
-	ShrubberyCreationForm(const string target);
+	ShrubberyCreationForm(const std::string target);
 	ShrubberyCreationForm(const ShrubberyCreationForm &src);
 	ShrubberyCreationForm &operator=(const ShrubberyCreationForm &src);
 	~ShrubberyCreationForm();

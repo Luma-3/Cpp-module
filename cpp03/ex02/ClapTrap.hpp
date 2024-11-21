@@ -3,14 +3,12 @@
 
 #include <string>
 
-using std::string;
-
 class ClapTrap {
 protected:
-	string _name;
-	int	_hit_point;
-	int _energy_point;
-	int _attack_damage;
+	const std::string	_name;
+	unsigned int		_hit_point;
+	unsigned int		_energy_point;
+	unsigned int		_attack_damage;
 
 public:
 	ClapTrap();
@@ -18,21 +16,16 @@ public:
 	ClapTrap & operator=(const ClapTrap & src);
 	~ClapTrap();
 
-	ClapTrap(const string &name);
+	ClapTrap(const std::string &name);
 
-	virtual void attack(const string &target);
-	void takeDamage(unsigned int amount);
-	void beRepaired(unsigned int amount);
+	virtual void	attack(const std::string &target);
+	void			takeDamage(unsigned int amount);
+	void			beRepaired(unsigned int amount);
 
-	void setName(const string &name);
-	void setHitPoint(unsigned int hit_point);
-	void setEnergyPoint(unsigned int energy_point);
-	void setAttackDamage(unsigned int attack_damage);
-
-	string getName(void) const;
-	unsigned int getHitPoint(void) const;
-	unsigned int getEnergyPoint(void) const;
-	unsigned int getAttackDamage(void) const;
+	const std::string	&getName(void) const;
+	unsigned int		getHitPoint(void) const;
+	unsigned int		getEnergyPoint(void) const;
+	unsigned int		getAttackDamage(void) const;
 
 };
 

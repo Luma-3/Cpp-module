@@ -6,13 +6,15 @@
 /*   By: jbrousse <jbrousse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 17:02:17 by jbrousse          #+#    #+#             */
-/*   Updated: 2024/06/19 18:27:35 by jbrousse         ###   ########.fr       */
+/*   Updated: 2024/08/21 12:43:07 by jbrousse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "HumanB.hpp"
 
-HumanB::HumanB(string name) : name(name) {};
+HumanB::HumanB(string name) : name(name) {
+	weapon = NULL;
+};
 
 HumanB::~HumanB() {};
 

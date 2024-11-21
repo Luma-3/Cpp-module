@@ -6,7 +6,7 @@
 /*   By: jbrousse <jbrousse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/11 12:33:45 by jbrousse          #+#    #+#             */
-/*   Updated: 2024/07/11 12:35:08 by jbrousse         ###   ########.fr       */
+/*   Updated: 2024/08/21 14:52:21 by jbrousse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,9 @@
 
 #include <string>
 
-using std::string;
-
 class Brain {
 private:
-	string ideas[100];
+	std::string ideas[100];
 
 public:
 	Brain();

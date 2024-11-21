@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   RobotomyRequestForm.hpp                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luma <luma@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: jbrousse <jbrousse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 21:50:07 by luma              #+#    #+#             */
-/*   Updated: 2024/08/03 21:53:58 by luma             ###   ########.fr       */
+/*   Updated: 2024/08/29 12:53:03 by jbrousse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ class RobotomyRequestForm : public AForm
 {
 public:
 	RobotomyRequestForm();
-	RobotomyRequestForm(const string target);
+	RobotomyRequestForm(const std::string target);
 	RobotomyRequestForm(const RobotomyRequestForm &src);
 	RobotomyRequestForm &operator=(const RobotomyRequestForm &src);
 	~RobotomyRequestForm();

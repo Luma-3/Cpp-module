@@ -6,7 +6,7 @@
 /*   By: jbrousse <jbrousse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 14:20:07 by jbrousse          #+#    #+#             */
-/*   Updated: 2024/07/11 10:32:51 by jbrousse         ###   ########.fr       */
+/*   Updated: 2024/08/28 11:11:21 by jbrousse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,35 +17,53 @@
 
 #include <iostream>
 
+#define RED "\033[1;31m"
+#define GREEN "\033[1;32m"
+#define RESET "\033[0m"
+
 using std::cout;
 using std::endl;
 
 int main(void)
 {
-	ClapTrap warrior("Michel");
-	warrior.setAttackDamage(5);
+	DiamondTrap Default;
 
-	ScavTrap a1("Jack");
-	FragTrap b1("Val");
-	DiamondTrap c1("test");
-
-	a1.attack("Michel");
-	warrior.takeDamage(a1.getAttackDamage());
+	DiamondTrap a("DiamondTrap1");
+	DiamondTrap b("DiamondTrap2");
 	
-	a1.guardGate();
+	cout << GREEN <<  "----------------" << endl;
+	cout << "Combat" << endl;
+	cout << "----------------" << RESET <<endl << endl;
 
-	warrior.attack("Jack");
-	a1.takeDamage(warrior.getAttackDamage());
+	a.attack("DiamondTrap2");
+	b.takeDamage(a.getAttackDamage());
 
-	b1.attack(a1.getName());
-	a1.takeDamage(b1.getAttackDamage());
+	b.attack("DiamondTrap1");
+	a.takeDamage(b.getAttackDamage());
+	a.beRepaired(5);
 
-	b1.highFivesGuys();
 
-	c1.whoAmI();
-	c1.attack(b1.getName());
-	b1.takeDamage(c1.getAttackDamage());
-	
-		
+	cout << "Name a: " << a.getName() << endl;
+	cout << "----------------" << endl;
+	cout << "Attack a: " << a.getAttackDamage() << endl;
+	cout << "Hit point a: " << a.getHitPoint() << endl;
+	cout << "Energy point a: " << a.getEnergyPoint() << endl;
+	cout << "----------------" << endl << endl;
+
+	cout << "Name b: " << b.getName() << endl;
+	cout << "----------------" << endl;
+	cout << "Attack b: " << b.getAttackDamage() << endl;
+	cout << "Hit point b: " << b.getHitPoint() << endl;
+	cout << "Energy point b: " << b.getEnergyPoint() << endl;
+	cout << "----------------" << endl << endl;
+
+	cout << "----------------" << endl;
+	cout << "Spec methode" << endl;
+	cout << "----------------" << endl;
+
+	a.highFivesGuys();
+	a.guardGate();
+	a.whoAmI();
+
 	return 0;
 }
