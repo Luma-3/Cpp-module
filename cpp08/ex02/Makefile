@@ -6,33 +6,26 @@
 #    By: jbrousse <jbrousse@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/04 23:30:42 by jbrousse          #+#    #+#              #
-#    Updated: 2024/11/28 14:40:03 by jbrousse         ###   ########.fr        #
+#    Updated: 2024/11/28 14:46:21 by jbrousse         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = c++
-CFLAGS = -Wall -Wextra -Werror -Wshadow -Wunused -std=c++98 -I $(INC)
+CFLAGS = -Wall -Wextra -Werror -Wshadow -Wunused -std=c++98 -I.
 
-NAME = easyfind
+NAME = MutantStack
 
-SRC_DIR = src/
-
-INC = inc/
-
-SRCS =	main.cpp
-
-SRC = $(addprefix $(SRC_DIR), $(SRCS))
-
+SRC =	main.cpp
 
 OBJ_DIR = obj/
-OBJS = $(addprefix $(OBJ_DIR), $(SRCS:.cpp=.o))
+OBJS = $(addprefix $(OBJ_DIR), $(SRC:.cpp=.o))
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 
-$(OBJ_DIR)%.o: $(SRC_DIR)%.cpp
+$(OBJ_DIR)%.o: %.cpp
 	mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) -c $< -o $@
 
