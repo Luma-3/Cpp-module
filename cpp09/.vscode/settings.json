@@ -58,7 +58,15 @@
 		"locale": "cpp",
 		"print": "cpp",
 		"queue": "cpp",
-		"stack": "cpp"
+		"stack": "cpp",
+		"cstring": "cpp",
+		"mutex": "cpp",
+		"format": "cpp",
+		"__locale": "cpp",
+		"__verbose_abort": "cpp",
+		"ios": "cpp",
+		"chrono": "cpp",
+		"ratio": "cpp"
 	},
 	"C_Cpp.default.compilerPath": "/usr/bin/g++"
 }
