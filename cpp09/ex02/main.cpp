@@ -6,11 +6,9 @@
 /*   By: jbrousse <jbrousse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:00:27 by jbrousse          #+#    #+#             */
-/*   Updated: 2024/12/03 16:35:52 by jbrousse         ###   ########.fr       */
+/*   Updated: 2024/12/04 13:55:35 by jbrousse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-
 
 #include <cstdlib>
 #include <cstring>
@@ -62,7 +60,7 @@ int *parse(int ac, char **av)
 			if (tab[i] == tab[j]) {
 				delete[] tab;
 				throw std::runtime_error("Invalid Input: Duplicate number " +
-										 to_string(tab[i]));
+										 to_string(tab[j]));
 			}
 		}
 	}
@@ -82,7 +80,7 @@ int main(int ac, char **av)
 	try {
 		tab = parse(ac - 1, av + 1);
 		PmergeMe merger(tab, ac - 1);
-		merger.mergeSortVector();
+		merger.startSortVector();
 	} catch (std::exception &e) {
 		delete[] tab;
 		std::cerr << e.what() << std::endl;

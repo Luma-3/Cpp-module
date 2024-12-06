@@ -6,7 +6,7 @@
 /*   By: jbrousse <jbrousse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 13:26:55 by jbrousse          #+#    #+#             */
-/*   Updated: 2024/12/03 17:09:47 by jbrousse         ###   ########.fr       */
+/*   Updated: 2024/12/06 15:21:19 by jbrousse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,28 @@
 #include <sstream>
 #include <vector>
 
-#define MAX(a, b) ((a) > (b) ? (a) : (b))
-#define MIN(a, b) ((a) < (b) ? (a) : (b))
-
 class PmergeMe
 {
   private:
+	class Pair
+	{
+	  public:
+		int max;
+		int min;
+
+		Pair();
+		Pair(int min, int max);
+		Pair(const Pair &src);
+		~Pair();
+
+		static void sortPair(Pair &pair);
+		Pair	   &operator=(const Pair &rhs);
+	};
+
+	typedef struct Pair_s Pair_s;
+
 	const static int _nb_group = 14;
-	const static int _group[_nb_group];
+	const static int _groupSizes[_nb_group];
 	size_t			 _size;
 	int				*_tab;
 
@@ -37,15 +51,18 @@ class PmergeMe
 
 	PmergeMe();
 
-	static std::pair< int, int > getMinMaxPair(int val1, int val2);
-
-	static void createPair(std::vector< std::pair< int, int > > &vec_pair,
-						   std::vector< int > &vec, size_t size, int &reste);
+	std::vector< Pair * > createPair(const std::vector< Pair * > &vec,
+									 size_t size, int &reste);
 
 	static int calculateNBGroup(int limit);
 
-	int **initGroup(int									  nb_group,
-					std::vector< std::pair< int, int > > &vec_pair, int reste);
+	int **initGroup(int nb_group, std::vector< Pair * > &S_min, int reste);
+
+	void invertGroup(int **group, int nb_group);
+
+	void dicotomicInsertion(std::vector< Pair * > &vec, int val);
+
+	static bool comparePairVal(const Pair *a, int val);
 
   public:
 	PmergeMe(int *tab, int size);
@@ -56,7 +73,9 @@ class PmergeMe
 
 	void printResult();
 
-	void mergeSortVector();
+	std::vector< Pair * >
+		 mergeSortVector(const std::vector< Pair	  *> &input_vec);
+	void startSortVector();
 	void mergeSortList();
 };
 

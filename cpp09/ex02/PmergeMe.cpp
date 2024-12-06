@@ -6,16 +6,17 @@
 /*   By: jbrousse <jbrousse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 13:34:34 by jbrousse          #+#    #+#             */
-/*   Updated: 2024/12/03 17:16:18 by jbrousse         ###   ########.fr       */
+/*   Updated: 2024/12/06 15:23:45 by jbrousse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
 
 #include <algorithm>
+#include <cstring>
 
-const int PmergeMe::_group[14] = {2,   2,	6,	 10,   22,	 42,   86,
-								  170, 342, 682, 1366, 2730, 5462, 10922};
+const int PmergeMe::_groupSizes[14] = {2,	2,	 6,	  10,	22,	  42,	86,
+									   170, 342, 682, 1366, 2730, 5462, 10922};
 
 PmergeMe::PmergeMe() {}
 
@@ -71,42 +72,25 @@ void PmergeMe::printResult()
 			  << std::endl;
 }
 
-// template < typename T >
-// void createPair(T &container, )
-
-void PmergeMe::createPair(std::vector< std::pair< int, int > > &vec_pair,
-						  std::vector< int > &vec, size_t size, int &reste)
+std::vector< PmergeMe::Pair * >
+PmergeMe::createPair(const std::vector< PmergeMe::Pair * > &vec, size_t size,
+					 int &reste)
 {
-	for (std::vector< int >::iterator it = vec.begin(); it < vec.end();
-		 it += 2) {
+	std::vector< PmergeMe::Pair * > S;
+
+	for (std::vector< PmergeMe::Pair * >::const_iterator it = vec.begin();
+		 it < vec.end(); it += 2) {
 
 		if (size % 2 != 0 && it == vec.end() - 1) {
-			reste = *it;
+			reste = (*it)->max;
 			break;
 		}
-		vec_pair.push_back(getMinMaxPair(*it, *(it + 1)));
-	}
-}
 
-std::pair< int, int > PmergeMe::getMinMaxPair(int val1, int val2)
-{
-	std::pair< int, int > pair;
-
-	if (val2 == -1) {
-		pair.first = -1;
-		pair.second = val1;
-		return pair;
+		S.push_back(new PmergeMe::Pair((*it)->max, (*(it + 1))->max));
+		PmergeMe::Pair::sortPair(*S.back());
 	}
 
-	if (val1 > val2) {
-		pair.first = val1;
-		pair.second = val2;
-	}
-	else {
-		pair.first = val2;
-		pair.second = val1;
-	}
-	return pair;
+	return S;
 }
 
 int PmergeMe::calculateNBGroup(int limit)
@@ -114,77 +98,121 @@ int PmergeMe::calculateNBGroup(int limit)
 	int some_group_size = 0;
 	int n = 0;
 
-	while (some_group_size <= limit && n < _nb_group) {
-		some_group_size += _group[n];
+	while (some_group_size < limit && n < _nb_group) {
+		some_group_size += _groupSizes[n];
 		++n;
 	}
 	return n;
 }
 
-int **PmergeMe::initGroup(int									nb_group,
-						  std::vector< std::pair< int, int > > &vec_pair,
-						  int									reste)
+int **PmergeMe::initGroup(int nb_group, std::vector< PmergeMe::Pair * > &S,
+						  int reste)
 {
 	int **group = new int *[nb_group];
 
 	for (int i = 0; i < nb_group; ++i) {
-		group[i] = new int[_group[i]];
+		group[i] = new int[_groupSizes[i]];
+		memset(group[i], -1, _groupSizes[i] * sizeof(int));
 	}
 
-	std::vector< std::pair< int, int > >::iterator it = vec_pair.begin();
+	std::vector< PmergeMe::Pair * >::iterator it = S.begin();
 
+	int i = 0;
+	int j = 0;
 
-	while (it != vec_pair.end()) {
-		for (int i = 0; i < nb_group; ++i) {
-			for (int j = 0; j < _group[i]; ++j) {
-				group[i][j] = it->second;
-				++it;
-			}
+	while (it != S.end()) {
+
+		if ((*it)->min == -1) {
+			++it;
+			continue;
 		}
+
+		if (j > _groupSizes[i] - 1) {
+			++i;
+			j = 0;
+		}
+		group[i][j] = (*it)->min;
+		++j;
+		++it;
+	}
+	if (reste != -1) {
+		if (j > _groupSizes[i] - 1) {
+			++i;
+			j = 0;
+		}
+		group[i][j] = reste;
 	}
 
 	return group;
 }
 
-void PmergeMe::mergeSortVector()
+void PmergeMe::invertGroup(int **group, int nb_group)
 {
-	std::vector< std::pair< int, int > > vec_pair;
-	int									 reste = -1;
+	for (int i = 0; i < nb_group; ++i) {
+		std::reverse(group[i], group[i] + _groupSizes[i]);
+	}
+}
 
-	createPair(vec_pair, _vec, _size, reste);
+void PmergeMe::dicotomicInsertion(std::vector< PmergeMe::Pair * > &vec, int val)
+{
+	std::vector< PmergeMe::Pair * >::iterator it =
+		std::lower_bound(vec.begin(), vec.end(), val, comparePairVal);
+	vec.insert(it, new PmergeMe::Pair(-1, val));
+	// (*it)->min = -1;
+}
 
-	// for (size_t i = 0; i < vec_pair.size(); ++i) {
-	// 	std::cout << "(" << vec_pair[i].first << ", " << vec_pair[i].second
-	// 			  << ") ";
-	// }
-	// std::cout << "reste: " << reste;
-	// std::cout << std::endl;
+std::vector< PmergeMe::Pair * >
+PmergeMe::mergeSortVector(const std::vector< PmergeMe::Pair * > &input_vec)
+{
+	std::vector< PmergeMe::Pair * > S;
+	int								reste = -1;
 
-	// TODO resursive sort on vec S_max
+	S = createPair(input_vec, input_vec.size(), reste);
 
-	std::vector< int > S;
-
-	for (size_t i = 0; i < vec_pair.size(); ++i) {
-		S.push_back(vec_pair[i].first);
+	if (S.size() > 1) {
+		S = mergeSortVector(S); // recursive call
 	}
 
-	S.insert(S.begin(), vec_pair[0].second);
+	if (reste != -1 && S[S.size() - 1]->max < reste) {
+		S.insert(S.begin(), new PmergeMe::Pair(-1, reste));
+		reste = -1;
+	}
 
-	// for (size_t i = 0; i < S.size(); ++i) {
-	// 	std::cout << S[i] << " ";
-	// }
-	// std::cout << std::endl;
-	int size_S_min = S.size() + (reste == -1 ? 0 : 1) - 1;
+	S.insert(S.begin(), new PmergeMe::Pair(-1, S[0]->min));
 
-	int	  nb_group = calculateNBGroup(size_S_min);
-	int **group = initGroup(nb_group, vec_pair, reste);
+	int nb_group = calculateNBGroup(S.size() + (reste == -1 ? 0 : 1) - 1);
+
+	int **group = initGroup(nb_group, S, reste);
+	invertGroup(group, nb_group);
 
 	for (int i = 0; i < nb_group; ++i) {
-		std::cout << "Group " << i << ": ";
-		for (int j = 0; j < _group[i]; ++j) {
-			std::cout << "id[" << j << "]: " << group[i][j] << " ";
+		for (int j = 0; j < _groupSizes[i]; ++j) {
+			if (group[i][j] == -1) {
+				continue;
+			}
+			dicotomicInsertion(S, group[i][j]);
 		}
-		std::cout << std::endl;
+	}
+
+	return S;
+}
+
+void PmergeMe::startSortVector()
+{
+	// _vec = mergeSortVector(_vec);
+	std::vector< PmergeMe::Pair * > S;
+	for (size_t i = 0; i < _size; ++i) {
+		S.push_back(new PmergeMe::Pair(-1, _vec[i]));
+	}
+
+	S = mergeSortVector(S);
+
+	for (size_t i = 0; i < _size; ++i) {
+		_vec[i] = S[i]->max;
+	}
+
+	for (size_t i = 0; i < _size; ++i) {
+		std::cout << _vec[i] << " ";
 	}
 	std::cout << std::endl;
 }
@@ -192,4 +220,41 @@ void PmergeMe::mergeSortVector()
 void PmergeMe::mergeSortList()
 {
 	// ...
+}
+
+bool PmergeMe::comparePairVal(const PmergeMe::Pair *a, int val)
+{
+	return a->max < val;
+}
+
+//////////////////////
+//		Utils		//
+//////////////////////
+
+PmergeMe::Pair::Pair() : max(0), min(0) {}
+
+PmergeMe::Pair::Pair(int min, int max) : max(max), min(min) {}
+
+void PmergeMe::Pair::sortPair(Pair &pair)
+{
+	if (pair.min > pair.max) {
+		std::swap(pair.min, pair.max);
+	}
+}
+
+PmergeMe::Pair::Pair(const Pair &src)
+{
+	max = src.max;
+	min = src.min;
+}
+
+PmergeMe::Pair::~Pair() {}
+
+PmergeMe::Pair &PmergeMe::Pair::operator=(const Pair &rhs)
+{
+	if (this != &rhs) {
+		max = rhs.max;
+		min = rhs.min;
+	}
+	return *this;
 }
