@@ -6,13 +6,16 @@
 /*   By: jbrousse <jbrousse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 13:26:55 by jbrousse          #+#    #+#             */
-/*   Updated: 2024/12/06 15:21:19 by jbrousse         ###   ########.fr       */
+/*   Updated: 2024/12/09 16:07:47 by jbrousse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PMERGEME_HPP
 #define PMERGEME_HPP
 
+#include <cmath>
+#include <ctime>
+#include <iomanip>
 #include <iostream>
 #include <list>
 #include <sstream>
@@ -21,27 +24,13 @@
 class PmergeMe
 {
   private:
-	class Pair
-	{
-	  public:
-		int max;
-		int min;
+	const static int _precision = 5;
 
-		Pair();
-		Pair(int min, int max);
-		Pair(const Pair &src);
-		~Pair();
+	int	 _nb_group;
+	int *_groupSizes;
 
-		static void sortPair(Pair &pair);
-		Pair	   &operator=(const Pair &rhs);
-	};
-
-	typedef struct Pair_s Pair_s;
-
-	const static int _nb_group = 14;
-	const static int _groupSizes[_nb_group];
-	size_t			 _size;
-	int				*_tab;
+	size_t _size;
+	int	  *_tab;
 
 	std::vector< int > _vec;
 	double			   _time_vec;
@@ -51,18 +40,19 @@ class PmergeMe
 
 	PmergeMe();
 
-	std::vector< Pair * > createPair(const std::vector< Pair * > &vec,
-									 size_t size, int &reste);
+	std::vector< int > mergeSortVector(const std::vector< int > &input_vec);
+	int				   createPairVector(const std::vector< int > &vec,
+										std::vector< int > &S_Max, std::vector< int > &S_Min);
+	int **initGroupVector(int nb_group, std::vector< int > &S_Min, int reste);
 
-	static int calculateNBGroup(int limit);
+	std::list< int > mergeSortList(const std::list< int > &list);
+	int	  createPairList(const std::list< int > &list, std::list< int > &S_Max,
+						 std::list< int > &S_Min);
+	int **initGroupList(int nb_group, std::list< int > &S_Min, int reste);
 
-	int **initGroup(int nb_group, std::vector< Pair * > &S_min, int reste);
-
+	int	 calculateNBGroup(int limit);
+	void calculateGroupSize();
 	void invertGroup(int **group, int nb_group);
-
-	void dicotomicInsertion(std::vector< Pair * > &vec, int val);
-
-	static bool comparePairVal(const Pair *a, int val);
 
   public:
 	PmergeMe(int *tab, int size);
@@ -73,10 +63,8 @@ class PmergeMe
 
 	void printResult();
 
-	std::vector< Pair * >
-		 mergeSortVector(const std::vector< Pair	  *> &input_vec);
 	void startSortVector();
-	void mergeSortList();
+	void startSortList();
 };
 
 template < typename T > std::string to_string(T val)

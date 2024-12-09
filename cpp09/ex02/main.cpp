@@ -6,7 +6,7 @@
 /*   By: jbrousse <jbrousse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:00:27 by jbrousse          #+#    #+#             */
-/*   Updated: 2024/12/04 13:55:35 by jbrousse         ###   ########.fr       */
+/*   Updated: 2024/12/09 16:08:27 by jbrousse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,8 @@ int main(int ac, char **av)
 		tab = parse(ac - 1, av + 1);
 		PmergeMe merger(tab, ac - 1);
 		merger.startSortVector();
+		merger.startSortList();
+		merger.printResult();
 	} catch (std::exception &e) {
 		delete[] tab;
 		std::cerr << e.what() << std::endl;
