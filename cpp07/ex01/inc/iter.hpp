@@ -5,21 +5,25 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jbrousse <jbrousse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/03 13:30:52 by jbrousse          #+#    #+#             */
-/*   Updated: 2024/09/03 14:46:28 by jbrousse         ###   ########.fr       */
+/*   Created: 2024/11/21 18:51:34 by jbrousse          #+#    #+#             */
+/*   Updated: 2024/11/21 18:55:21 by jbrousse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ITER_HPP
-# define ITER_HPP
+#define ITER_HPP
 
-#include <cstdlib>
-
-template <typename T, typename U>
-void iter(T array[], size_t len, U *function) {
-	for (size_t i = 0; i < len; ++i) {
-		function(array[i]);
+template <typename T> void iter(T *array, int length, void (*f)(const T &))
+{
+	for (int i = 0; i < length; i++) {
+		f(array[i]);
 	}
+}
+
+// This function is used to print the value of the array
+template <typename T> void print(const T &value)
+{
+	std::cout << value << std::endl;
 }
 
 #endif // ITER_HPP

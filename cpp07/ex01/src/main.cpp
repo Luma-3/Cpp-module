@@ -5,43 +5,24 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jbrousse <jbrousse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/03 13:30:55 by jbrousse          #+#    #+#             */
-/*   Updated: 2024/09/03 14:56:23 by jbrousse         ###   ########.fr       */
+/*   Created: 2024/11/21 18:53:09 by jbrousse          #+#    #+#             */
+/*   Updated: 2024/11/21 18:55:11 by jbrousse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iter.hpp>
 #include <iostream>
 
-void add_one(int &i) {
-	i++;
-}
+#include "iter.hpp"
 
-void rot_one(char &c) {
-	c--;
-}
+int main(void)
+{
+	int			intArray[] = {1, 2, 3, 4, 5};
+	float		floatArray[] = {1.1, 2.2, 3.3, 4.4, 5.5};
+	std::string stringArray[] = {"one", "two", "three", "four", "five"};
 
-void print_int(int i) {
-	std::cout << i << std::endl;
-}
+	iter(intArray, 5, print);
+	iter(floatArray, 5, print);
+	iter(stringArray, 5, print);
 
-void print_char(char c) {
-	std::cout << c;
-}
-
-int main(void) {
-	int arr_i[5] = {1, 2, 3, 4, 5};
-	iter(arr_i, 5, print_int);
-	std::cout << std::endl;
-	iter(arr_i, 5, add_one);
-	iter(arr_i, 5, print_int);
-	std::cout << std::endl;
-
-	char arr_c[13] = "Hello, World";
-	iter(arr_c, 12, print_char);
-	std::cout << std::endl;
-	iter(arr_c, 12, rot_one);
-	iter(arr_c, 12, print_char);
-	std::cout << std::endl;
-	return (0);
+	return 0;
 }
